@@ -1,36 +1,41 @@
 import React from 'react';
-import { Nav, NavDropdown } from 'react-bootstrap';
 
 class NavBar extends React.Component {
 
     render() {
-        const handleSelect = (eventKey) => console.log(`selected ${eventKey}`);
-
         return (
-            <Nav justify variant="tabs" activeKey="1" onSelect={handleSelect}>
-                <Nav.Item>
-                    <Nav.Link eventKey="1" href="#/home">
-                        NavLink 1 content
-                    </Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="2" title="Item">
-                        NavLink 2 content
-                    </Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="3" disabled>
-                        NavLink 3 content
-                    </Nav.Link>
-                </Nav.Item>
-                <NavDropdown title="User's login" id="nav-dropdown">
-                    <NavDropdown.Item eventKey="4.1">Show profile</NavDropdown.Item>
-                    <NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item eventKey="4.3">Something else here</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item eventKey="4.4" onClick={this.props.logout}>Log out</NavDropdown.Item>
-                </NavDropdown>
-            </Nav>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <a className="navbar-brand" href="//">
+                    Allergy App
+                </a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item active" onClick={this.props.login}>
+                            <a className="nav-link" href="//">link 1</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="//">link 2</a>
+                        </li>
+                    </ul>
+                    <div className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle" href="//" id="navbarDropdown"
+                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            User's name
+                        </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a className="dropdown-item" href="//">Action</a>
+                            <a className="dropdown-item" href="//">Another action</a>
+                            <div className="dropdown-divider"></div>
+                            <a className="dropdown-item" href="//" onClick={this.props.logout}>Log out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         );
     }
 
