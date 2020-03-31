@@ -4,11 +4,11 @@ import { Nav } from 'react-bootstrap';
 class NavBar extends React.Component {
 
     render() {
-        const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
+        const handleSelect = (eventKey) => console.log(`selected ${eventKey}`);
 
         return (
             <Nav className="justify-content-center" activeKey="1" onSelect={handleSelect}>
-                <Nav.Item>
+                <Nav.Item onClick={this.props.login}>
                     <Nav.Link eventKey="1" href="#/home">
                         Login
                     </Nav.Link>

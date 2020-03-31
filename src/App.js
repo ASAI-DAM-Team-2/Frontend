@@ -9,9 +9,13 @@ function App() {
 
     const [user, setUser] = useState(false);
 
+    const login = () => {
+        setUser(!user);
+    }
+
   return (
     <div>
-        {user ? <NavUser></NavUser> : <NavVisitor></NavVisitor>}
+        {user ? <NavUser></NavUser> : <NavVisitor login={login}></NavVisitor>}
       <HomePage></HomePage>
     </div>
   );
