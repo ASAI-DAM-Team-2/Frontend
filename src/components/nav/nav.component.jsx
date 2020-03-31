@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav, NavDropdown } from 'react-bootstrap';
 
-class MyNav extends React.Component {
+class NavBar extends React.Component {
 
     render() {
         const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
@@ -36,4 +36,4 @@ class MyNav extends React.Component {
 
 }
 
-export default MyNav;
+export default NavBar;
