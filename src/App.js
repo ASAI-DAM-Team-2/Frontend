@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div>
-        {user ? <NavUser></NavUser> : <NavVisitor login={login}></NavVisitor>}
+        {user ? <NavUser logout={login}></NavUser> : <NavVisitor login={login}></NavVisitor>}
       <HomePage></HomePage>
     </div>
   );

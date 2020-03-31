@@ -4,7 +4,7 @@ import { Nav, NavDropdown } from 'react-bootstrap';
 class NavBar extends React.Component {
 
     render() {
-        const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
+        const handleSelect = (eventKey) => console.log(`selected ${eventKey}`);
 
         return (
             <Nav justify variant="tabs" activeKey="1" onSelect={handleSelect}>
@@ -23,12 +23,12 @@ class NavBar extends React.Component {
                         NavLink 3 content
                     </Nav.Link>
                 </Nav.Item>
-                <NavDropdown title="Dropdown" id="nav-dropdown">
-                    <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
+                <NavDropdown title="User's login" id="nav-dropdown">
+                    <NavDropdown.Item eventKey="4.1">Show profile</NavDropdown.Item>
                     <NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
                     <NavDropdown.Item eventKey="4.3">Something else here</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item eventKey="4.4">Separated link</NavDropdown.Item>
+                    <NavDropdown.Item eventKey="4.4" onClick={this.props.logout}>Log out</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
         );
