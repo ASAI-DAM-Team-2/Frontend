@@ -3,6 +3,7 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from './pages/homepage/homepage.component';
+import DishesPage from './pages/dishes/dishes.component';
 import NavUser from './components/nav/nav_user.component';
 import NavVisitor from './components/nav/nav_visitor.component';
 
@@ -12,12 +13,6 @@ function App () {
   const login = () => {
     setUser(!user);
   };
-
-  const MealsPage = () => (
-    <div>
-      <h1>Meals PAGE</h1>
-    </div>
-  );
 
   return (
     <div>
@@ -29,7 +24,7 @@ function App () {
       <Switch>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route path='/hats' component={MealsPage} />
+          <Route path='/dishes' component={DishesPage} />
         </Switch>
       </Switch>
     </div>
