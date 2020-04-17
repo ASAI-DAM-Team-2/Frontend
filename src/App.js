@@ -6,7 +6,7 @@ import HomePage from './pages/homepage/homepage.component';
 import NavUser from './components/nav/nav_user.component';
 import NavVisitor from './components/nav/nav_visitor.component';
 
-function App() {
+function App () {
   const [user, setUser] = useState(false);
 
   const login = () => {
@@ -22,9 +22,9 @@ function App() {
   return (
     <div>
       {user ? (
-        <NavUser logout={login}></NavUser>
+        <NavUser logout={login} />
       ) : (
-        <NavVisitor login={login}></NavVisitor>
+        <NavVisitor login={login} />
       )}
       <Switch>
         <Switch>

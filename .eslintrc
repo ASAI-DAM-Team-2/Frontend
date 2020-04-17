@@ -1,4 +1,8 @@
 {
     "parser": "babel-eslint",
+    "rules": {
+        "semi": [2, "always"],
+        "react/prop-types": "off",
+    },
     "extends": ["standard", "standard-react"]
   }
