@@ -1,4 +1,7 @@
 import React from 'react';
+
+import DishesItem from '../dishes-item/dishes-item.componnent';
+
 import './dishes-preview.styles.scss';
 
 const DishesPreview = ({ title, items }) => (
@@ -6,8 +9,8 @@ const DishesPreview = ({ title, items }) => (
     <h1>{title.toUpperCase()}</h1>
     <div className='preview'>
       {
-        items.map(item => (
-          <div key={item.id}>{item.name}</div>
+        items.map(({ id, ...otherProps }) => (
+          <DishesItem key={id} {...otherProps} />
         ))
       }
     </div>
