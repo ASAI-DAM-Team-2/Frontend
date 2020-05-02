@@ -20,6 +20,12 @@ class LoginModal extends Component {
         error_el: null
     };
 
+    handleSubmit(event) {
+        event.preventDefault();
+        this.props.onLogin();
+        // here will be ajax api call for login
+    }
+
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.user !== this.props.user) {
             if (this.props.user) {
@@ -50,22 +56,32 @@ class LoginModal extends Component {
                     </div>
                 </ModalHeader>
                 <ModalBody>
-                    <Form>
+                    <Form onSubmit={(event) => this.handleSubmit(event)}>
                         <Row form>
                             <Col md={6}>
                                 <FormGroup>
                                     <Label for="userName">*Your user name</Label>
-                                    <Input type="text" name="username" id="userName" placeholder="Enter your user name" required/>
+                                    <Input type="text"
+                                           name="username"
+                                           id="userName"
+                                           placeholder="Enter your user name"
+                                           required
+                                    />
                                 </FormGroup>
                             </Col>
                             <Col md={6}>
                                 <FormGroup>
                                     <Label for="password">*Your password</Label>
-                                    <Input type="password" name="password" id="password" placeholder="Enter your password" required/>
+                                    <Input type="password"
+                                           name="password"
+                                           id="password"
+                                           placeholder="Enter your password"
+                                           required
+                                    />
                                 </FormGroup>
                             </Col>
                             <Col md={12} className="text-center">
-                                <Button color="info" onClick={this.props.onLogin} className="w-100">
+                                <Button type="submit" color="info" className="w-100">
                                     Submit
                                 </Button>
                             </Col>
