@@ -5,8 +5,6 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from './pages/homepage/Homepage';
 import DishesPage from './pages/dishes/Dishes';
-import NavUser from './components/nav/nav_user.component';
-import NavVisitor from './components/nav/NavVisitor';
 import IndexHeader from './components/Headers/IndexHeader.js';
 
 import IndexNavbar from './components/Navbars/IndexNavbar.js';
