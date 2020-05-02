@@ -17,17 +17,21 @@ import Alert from '../alert/Alert';
 
 class LoginModal extends Component {
     state = {
-        error_el: null,
-        login_error:  false
+        error_el: null
     };
-    handleLoginClick = () => {
-        this.props.onLogin();
-        if (!this.props.user) {
-            this.setState({error_el : <Alert message="Incorrect user name or password!" type="danger"/>});
-        } else {
-            this.props.onLoginModalToggle();
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.user !== this.props.user) {
+            if (this.props.user) {
+                this.setState({error_el : <Alert message="Logged successfully" type="success"/>});
+                setTimeout( () => {
+                    this.props.onLoginModalToggle();
+                }, 1000);
+            } else {
+                this.setState({error_el : <Alert message="Incorrect user name or password!" type="danger"/>});
+            }
         }
-    };
+    }
 
     render () {
         return (
@@ -61,7 +65,7 @@ class LoginModal extends Component {
                                 </FormGroup>
                             </Col>
                             <Col md={12} className="text-center">
-                                <Button color="info" onClick={this.handleLoginClick} className="w-100">
+                                <Button color="info" onClick={this.props.onLogin} className="w-100">
                                     Submit
                                 </Button>
                             </Col>
