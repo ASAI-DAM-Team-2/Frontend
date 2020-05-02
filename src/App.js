@@ -40,7 +40,11 @@ function App() {
           </Switch>
         </Switch>
       </div>
-      <LoginModal show={loginModalShow} onLoginModalToggle={handleLoginModalTogle}/>
+      <LoginModal
+          show={loginModalShow}
+          onLoginModalToggle={handleLoginModalTogle}
+          onLogin={login}
+      />
     </div>
   );
 }
