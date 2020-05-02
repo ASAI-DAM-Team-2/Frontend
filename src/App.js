@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import './App.css';
+
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from './pages/homepage/homepage.component';
-import DishesPage from './pages/dishes/dishes.component';
+import HomePage from './pages/homepage/Homepage';
+import DishesPage from './pages/dishes/Dishes';
 import NavUser from './components/nav/nav_user.component';
-import NavVisitor from './components/nav/nav_visitor.component';
+import NavVisitor from './components/nav/NavVisitor';
+import IndexHeader from './components/Headers/IndexHeader.js';
 
-function App () {
+import IndexNavbar from './components/Navbars/IndexNavbar.js';
+// import IndexHeader from 'components/Headers/IndexHeader.js';
+// import IndexHeader from 'components/Headers/IndexHeader.js';
+// import DemoFooter from 'components/Footers/DemoFooter.js';
+
+function App() {
   const [user, setUser] = useState(false);
 
   const login = () => {
@@ -16,17 +23,18 @@ function App () {
 
   return (
     <div>
-      {user ? (
-        <NavUser logout={login} />
-      ) : (
-        <NavVisitor login={login} />
-      )}
-      <Switch>
+      <div>
+        <IndexHeader />
+        <IndexNavbar />
+      </div>
+      <div>
         <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/dishes' component={DishesPage} />
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route path='/dishes' component={DishesPage} />
+          </Switch>
         </Switch>
-      </Switch>
+      </div>
     </div>
   );
 }
