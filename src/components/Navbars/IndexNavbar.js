@@ -13,7 +13,7 @@ import {
   Container,
 } from 'reactstrap';
 
-function IndexNavbar() {
+function IndexNavbar(props) {
   const [navbarColor, setNavbarColor] = React.useState('navbar-transparent');
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
 
@@ -119,8 +119,8 @@ function IndexNavbar() {
             </NavItem>
             <NavItem>
               <NavLink
-                href='https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-index-navbar'
-                target='_blank'
+                href='#'
+                onClick={props.onLoginModalToggle}
               >
                 <i className='nc-icon nc-book-bookmark' /> Login
               </NavLink>

@@ -12,6 +12,8 @@ import IndexNavbar from './components/Navbars/IndexNavbar.js';
 // import IndexHeader from 'components/Headers/IndexHeader.js';
 // import DemoFooter from 'components/Footers/DemoFooter.js';
 
+import LoginModal from './components/modals/LoginModal';
+
 function App() {
   const [user, setUser] = useState(false);
 
@@ -19,11 +21,16 @@ function App() {
     setUser(!user);
   };
 
+  const [loginModalShow, setLoginModalShow] = React.useState(false);
+  const handleLoginModalTogle = () => {
+      setLoginModalShow(!loginModalShow);
+  };
+
   return (
     <div>
       <div>
         <IndexHeader />
-        <IndexNavbar />
+        <IndexNavbar onLoginModalToggle={handleLoginModalTogle}/>
       </div>
       <div>
         <Switch>
@@ -33,6 +40,12 @@ function App() {
           </Switch>
         </Switch>
       </div>
+      <LoginModal
+          show={loginModalShow}
+          onLoginModalToggle={handleLoginModalTogle}
+          onLogin={login}
+          user={user}
+      />
     </div>
   );
 }
