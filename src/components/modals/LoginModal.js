@@ -56,7 +56,7 @@ class LoginModal extends Component {
                     </div>
                 </ModalHeader>
                 <ModalBody>
-                    <Form onSubmit={(event) => this.handleSubmit(event)}>
+                    <Form method="POST" onSubmit={(event) => this.handleSubmit(event)}>
                         <Row form>
                             <Col md={6}>
                                 <FormGroup>
