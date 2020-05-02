@@ -44,6 +44,7 @@ function App() {
           show={loginModalShow}
           onLoginModalToggle={handleLoginModalTogle}
           onLogin={login}
+          user={user}
       />
     </div>
   );

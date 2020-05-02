@@ -13,12 +13,20 @@ import {
     Row,
     Col
 } from 'reactstrap';
+import Alert from '../alert/Alert';
 
 class LoginModal extends Component {
-
+    state = {
+        error_el: null,
+        login_error:  false
+    };
     handleLoginClick = () => {
         this.props.onLogin();
-        this.props.onLoginModalToggle();
+        if (!this.props.user) {
+            this.setState({error_el : <Alert message="Incorrect user name or password!" type="danger"/>});
+        } else {
+            this.props.onLoginModalToggle();
+        }
     };
 
     render () {
@@ -31,21 +39,24 @@ class LoginModal extends Component {
                     isOpen={this.props.show}
                     toggle={this.props.onLoginModalToggle}
                 >
-                <ModalHeader toggle={this.props.onLoginModalToggle}>
-                        <i className='nc-icon nc-book-bookmark' />&nbsp;Login
+                <ModalHeader>
+                    <i className='nc-icon nc-book-bookmark' />&nbsp;Login
+                    <div>
+                        {this.state.error_el}
+                    </div>
                 </ModalHeader>
                 <ModalBody>
                     <Form>
                         <Row form>
                             <Col md={6}>
                                 <FormGroup>
-                                    <Label for="userName">Your user name</Label>
+                                    <Label for="userName">*Your user name</Label>
                                     <Input type="text" name="username" id="userName" placeholder="Enter your user name" required/>
                                 </FormGroup>
                             </Col>
                             <Col md={6}>
                                 <FormGroup>
-                                    <Label for="password">Your password</Label>
+                                    <Label for="password">*Your password</Label>
                                     <Input type="password" name="password" id="password" placeholder="Enter your password" required/>
                                 </FormGroup>
                             </Col>
