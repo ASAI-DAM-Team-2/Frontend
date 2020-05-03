@@ -1,81 +1,99 @@
-import React from "react";
+import React, { Component } from "react";
 
 // reactstrap components
-import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
+import {
+  Button,
+  Card,
+  Form,
+  Input,
+  Container,
+  Row,
+  Col,
+  FormGroup,
+} from "reactstrap";
+import Alert from "../../components/alert/Alert";
 
-function RegisterPage() {
-  document.documentElement.classList.remove("nav-open");
-  React.useEffect(() => {
-    document.body.classList.add("register-page");
-    return function cleanup() {
-      document.body.classList.remove("register-page");
-    };
-  });
-  return (
-    <React.Fragment>
-      <div className="filter" />
-      <Container>
-        <Row>
-          <Col className="ml-auto mr-auto" lg="4">
-            <Card className="card-register ml-auto mr-auto">
-              <h3 className="title mx-auto">Welcome</h3>
-              <div className="social-line text-center">
-                <Button
-                  className="btn-neutral btn-just-icon mr-1"
-                  color="facebook"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
+class RegisterPage extends Component {
+  state = {
+    alert_el: null,
+  };
+
+  handleSubmit(event) {
+    event.preventDefault();
+    // when there will be ajax call true will be changed to its result
+    if (true) {
+      this.setState({
+        alert_el: <Alert message="Logged successfully" type="success" />,
+      });
+    } else {
+      this.setState({
+        alert_el: (
+          <Alert message="Incorrect user name or password!" type="danger" />
+        ),
+      });
+    }
+    // here will be ajax api call for register
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <div className="filter" />
+        <Container>
+          <Row>
+            <Col className="ml-auto mr-auto" lg="4">
+              <Card className="card-register ml-auto mr-auto">
+                <h3 className="title mx-auto">Register</h3>
+                {this.state.alert_el}
+                <Form
+                  className="register-form"
+                  method="POST"
+                  onSubmit={(event) => this.handleSubmit(event)}
                 >
-                  <i className="fa fa-facebook-square" />
-                </Button>
-                <Button
-                  className="btn-neutral btn-just-icon mr-1"
-                  color="google"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <i className="fa fa-google-plus" />
-                </Button>
-                <Button
-                  className="btn-neutral btn-just-icon"
-                  color="twitter"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <i className="fa fa-twitter" />
-                </Button>
-              </div>
-              <Form className="register-form">
-                <label>Email</label>
-                <Input placeholder="Email" type="text" />
-                <label>Password</label>
-                <Input placeholder="Password" type="password" />
-                <Button block className="btn-round" color="danger">
-                  Register
-                </Button>
-              </Form>
-              <div className="forgot">
-                <Button
-                  className="btn-link"
-                  color="danger"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  Forgot password?
-                </Button>
-              </div>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-      <div className="footer register-footer text-center">
-        <h6>
-          © {new Date().getFullYear()}, made with{" "}
-          <i className="fa fa-heart heart" /> by Creative Tim
-        </h6>
-      </div>
-    </React.Fragment>
-  );
+                  <FormGroup>
+                    <label for="email">*Email</label>
+                    <Input
+                      placeholder="Email"
+                      id="email"
+                      type="email"
+                      required
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <label for="username">*User name</label>
+                    <Input
+                      placeholder="User Name"
+                      id="username"
+                      type="text"
+                      required
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <label id="password">*Password</label>
+                    <Input
+                      placeholder="Password"
+                      id="password"
+                      type="password"
+                      required
+                    />
+                  </FormGroup>
+                  <Button type="submit" className="w-100" color="danger">
+                    Register
+                  </Button>
+                </Form>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+        <div className="footer register-footer text-center">
+          <h6>
+            © {new Date().getFullYear()}, made with{" "}
+            <i className="fa fa-heart heart" /> by Creative Tim
+          </h6>
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
 export default RegisterPage;
