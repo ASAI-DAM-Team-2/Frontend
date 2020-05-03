@@ -124,9 +124,14 @@ function IndexNavbar(props) {
               </NavLink>
             </NavItem>
             <NavItem>
-              <Link className="btn-round" color="danger" to="/register">
+              <NavLink
+                className="btn-round"
+                color="danger"
+                to="/register"
+                href="/register"
+              >
                 Sign up
-              </Link>
+              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>
