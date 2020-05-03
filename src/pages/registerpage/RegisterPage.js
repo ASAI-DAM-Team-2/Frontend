@@ -23,13 +23,12 @@ class RegisterPage extends Component {
     // when there will be ajax call true will be changed to its result
     if (true) {
       this.setState({
-        alert_el: <Alert message="Logged successfully" type="success" />,
+        alert_el: <Alert message="Registered successfully" type="success" />,
       });
+      // there will have to be more if else to determinate what went wrong in ajax call
     } else {
       this.setState({
-        alert_el: (
-          <Alert message="Incorrect user name or password!" type="danger" />
-        ),
+        alert_el: <Alert message="Something went wrong" type="danger" />,
       });
     }
     // here will be ajax api call for register
