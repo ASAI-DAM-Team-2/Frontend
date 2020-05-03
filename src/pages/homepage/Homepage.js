@@ -12,7 +12,7 @@ import {
 
 import DishCard from '../../components/dish-card/DishCard';
 
-import './Homepage.scss';
+import './HomePage.scss';
 
 const items = [
   {

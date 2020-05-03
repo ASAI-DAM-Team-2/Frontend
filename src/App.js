@@ -3,7 +3,7 @@ import './App.css';
 
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from './pages/homepage/Homepage';
+import HomePage from './pages/homepage/HomePage';
 import DishesPage from './pages/dishes/Dishes';
 import IndexHeader from './components/Headers/IndexHeader.js';
 
@@ -23,14 +23,14 @@ function App() {
 
   const [loginModalShow, setLoginModalShow] = React.useState(false);
   const handleLoginModalTogle = () => {
-      setLoginModalShow(!loginModalShow);
+    setLoginModalShow(!loginModalShow);
   };
 
   return (
     <div>
       <div>
         <IndexHeader />
-        <IndexNavbar onLoginModalToggle={handleLoginModalTogle}/>
+        <IndexNavbar onLoginModalToggle={handleLoginModalTogle} />
       </div>
       <div>
         <Switch>
@@ -41,10 +41,10 @@ function App() {
         </Switch>
       </div>
       <LoginModal
-          show={loginModalShow}
-          onLoginModalToggle={handleLoginModalTogle}
-          onLogin={login}
-          user={user}
+        show={loginModalShow}
+        onLoginModalToggle={handleLoginModalTogle}
+        onLogin={login}
+        user={user}
       />
     </div>
   );
