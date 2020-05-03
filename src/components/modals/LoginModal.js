@@ -17,7 +17,7 @@ import Alert from "../alert/Alert";
 
 class LoginModal extends Component {
   state = {
-    error_el: null,
+    alert_el: null,
   };
 
   handleSubmit(event) {
@@ -30,14 +30,14 @@ class LoginModal extends Component {
     if (prevProps.user !== this.props.user) {
       if (this.props.user) {
         this.setState({
-          error_el: <Alert message="Logged successfully" type="success" />,
+          alert_el: <Alert message="Logged successfully" type="success" />,
         });
         setTimeout(() => {
           this.props.onLoginModalToggle();
         }, 1000);
       } else {
         this.setState({
-          error_el: (
+          alert_el: (
             <Alert message="Incorrect user name or password!" type="danger" />
           ),
         });
@@ -58,7 +58,7 @@ class LoginModal extends Component {
           <ModalHeader>
             <i className="nc-icon nc-book-bookmark" />
             &nbsp;Login
-            <div>{this.state.error_el}</div>
+            <div>{this.state.alert_el}</div>
           </ModalHeader>
           <ModalBody>
             <Form method="POST" onSubmit={(event) => this.handleSubmit(event)}>
