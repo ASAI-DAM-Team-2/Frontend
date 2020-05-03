@@ -28,7 +28,7 @@ class RegisterPage extends Component {
       // there will have to be more if else to determinate what went wrong in ajax call
     } else {
       this.setState({
-        alert_el: <Alert message="Something went wrong" type="danger" />,
+        alert_el: <Alert message="Something went wrong" type="warning" />,
       });
     }
     // here will be ajax api call for register
