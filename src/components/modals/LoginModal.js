@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Button,
   Modal,
@@ -10,10 +10,13 @@ import {
   Label,
   Input,
   FormText,
+  Container,
+  Card,
   Row,
   Col,
-} from "reactstrap";
-import Alert from "../alert/Alert";
+} from 'reactstrap';
+import Alert from '../alert/Alert';
+import './LoginModal.scss';
 
 class LoginModal extends Component {
   state = {
@@ -30,7 +33,7 @@ class LoginModal extends Component {
     if (prevProps.user !== this.props.user) {
       if (this.props.user) {
         this.setState({
-          alert_el: <Alert message="Logged successfully" type="success" />,
+          alert_el: <Alert message='Logged successfully' type='success' />,
         });
         setTimeout(() => {
           this.props.onLoginModalToggle();
@@ -38,7 +41,7 @@ class LoginModal extends Component {
       } else {
         this.setState({
           alert_el: (
-            <Alert message="Incorrect user name or password!" type="danger" />
+            <Alert message='Incorrect user name or password!' type='danger' />
           ),
         });
       }
@@ -49,60 +52,86 @@ class LoginModal extends Component {
     return (
       <React.Fragment>
         <Modal
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
+          className=''
           centered
+          //   style={{ width: 600 }}
+          // size='sm'
           isOpen={this.props.show}
           toggle={this.props.onLoginModalToggle}
         >
-          <ModalHeader>
-            <i className="nc-icon nc-book-bookmark" />
-            &nbsp;Login
-            <div>{this.state.alert_el}</div>
-          </ModalHeader>
           <ModalBody>
-            <Form method="POST" onSubmit={(event) => this.handleSubmit(event)}>
+            <Form method='POST' onSubmit={(event) => this.handleSubmit(event)}>
               <Row form>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for="userName">*Your user name</Label>
-                    <Input
-                      type="text"
-                      name="username"
-                      id="userName"
-                      placeholder="Enter your user name"
-                      required
-                    />
-                  </FormGroup>
-                </Col>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for="password">*Your password</Label>
-                    <Input
-                      type="password"
-                      name="password"
-                      id="password"
-                      placeholder="Enter your password"
-                      required
-                    />
-                  </FormGroup>
-                </Col>
-                <Col md={12} className="text-center">
-                  <Button type="submit" color="info" className="w-100">
-                    Submit
-                  </Button>
+                <Col className='ml-auto mr-auto'>
+                  <Card className='card-plain ml-auto mr-auto'>
+                    <h3 className='title mx-auto'>Welcome</h3>
+                    <div className='social-line text-center'>
+                      <Button
+                        className='btn-neutral btn-just-icon mr-1'
+                        color='facebook'
+                        href='#pablo'
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <i className='fa fa-facebook-square' />
+                      </Button>
+                      <Button
+                        className='btn-neutral btn-just-icon mr-1'
+                        color='google'
+                        href='#pablo'
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <i className='fa fa-google-plus' />
+                      </Button>
+                      <Button
+                        className='btn-neutral btn-just-icon'
+                        color='twitter'
+                        href='#pablo'
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <i className='fa fa-twitter' />
+                      </Button>
+                    </div>
+                    <Form className='register-form'>
+                      <FormGroup className='mt-2'>
+                        <label htmlFor='userName'>Email</label>
+                        <Input
+                          placeholder='Email'
+                          type='email'
+                          name='email'
+                          id='email'
+                          placeholder='Enter your email'
+                          required
+                        />
+                      </FormGroup>
+                      <FormGroup className='mt-4'>
+                        <label htmlFor='password'>Password</label>
+                        <Input
+                          placeholder='Password'
+                          type='password'
+                          name='password'
+                          id='password'
+                          required
+                        />
+                      </FormGroup>
+                      <Button block className='btn-round mt-4' color='danger'>
+                        Login
+                      </Button>
+                    </Form>
+                    <div className='forgot'>
+                      <Button
+                        className='btn-link'
+                        color='danger'
+                        href='#pablo'
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        Forgot password?
+                      </Button>
+                    </div>
+                  </Card>
                 </Col>
               </Row>
             </Form>
           </ModalBody>
-          <ModalFooter>
-            <div className="mr-auto ml-2">
-              New to DISH DELIVERY? Create an account.
-            </div>
-            <Button color="danger" onClick={this.props.onLoginModalToggle}>
-              Close
-            </Button>
-          </ModalFooter>
         </Modal>
       </React.Fragment>
     );
