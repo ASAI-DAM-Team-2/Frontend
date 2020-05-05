@@ -10,10 +10,13 @@ import {
   Label,
   Input,
   FormText,
+  Container,
+  Card,
   Row,
   Col,
 } from 'reactstrap';
 import Alert from '../alert/Alert';
+import './LoginModal.scss';
 
 class LoginModal extends Component {
   state = {
@@ -49,60 +52,71 @@ class LoginModal extends Component {
     return (
       <React.Fragment>
         <Modal
-          size='lg'
-          aria-labelledby='contained-modal-title-vcenter'
+          className=''
           centered
+          //   style={{ width: 600 }}
+          // size='sm'
           isOpen={this.props.show}
           toggle={this.props.onLoginModalToggle}
         >
-          <ModalHeader>
-            <i className='nc-icon nc-book-bookmark' />
-            &nbsp;Login
-            <div>{this.state.error_el}</div>
-          </ModalHeader>
           <ModalBody>
-            <Form method='POST' onSubmit={(event) => this.handleSubmit(event)}>
-              <Row form>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for='userName'>*Your user name</Label>
-                    <Input
-                      type='text'
-                      name='username'
-                      id='userName'
-                      placeholder='Enter your user name'
-                      required
-                    />
-                  </FormGroup>
-                </Col>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for='password'>*Your password</Label>
-                    <Input
-                      type='password'
-                      name='password'
-                      id='password'
-                      placeholder='Enter your password'
-                      required
-                    />
-                  </FormGroup>
-                </Col>
-                <Col md={12} className='text-center'>
-                  <Button type='submit' color='info' className='w-100'>
-                    Submit
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
+            <Row>
+              <Col className='ml-auto mr-auto'>
+                <Card className='card-plain ml-auto mr-auto'>
+                  <h3 className='title mx-auto'>Welcome</h3>
+                  <div className='social-line text-center'>
+                    <Button
+                      className='btn-neutral btn-just-icon mr-1'
+                      color='facebook'
+                      href='#pablo'
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <i className='fa fa-facebook-square' />
+                    </Button>
+                    <Button
+                      className='btn-neutral btn-just-icon mr-1'
+                      color='google'
+                      href='#pablo'
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <i className='fa fa-google-plus' />
+                    </Button>
+                    <Button
+                      className='btn-neutral btn-just-icon'
+                      color='twitter'
+                      href='#pablo'
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <i className='fa fa-twitter' />
+                    </Button>
+                  </div>
+                  <Form className='register-form'>
+                    <div className='mt-2'>
+                      <label>Email</label>
+                      <Input placeholder='Email' type='text' />
+                    </div>
+                    <div className='mt-4'>
+                      <label>Password</label>
+                      <Input placeholder='Password' type='password' />
+                    </div>
+                    <Button block className='btn-round mt-4' color='danger'>
+                      Login
+                    </Button>
+                  </Form>
+                  <div className='forgot'>
+                    <Button
+                      className='btn-link'
+                      color='danger'
+                      href='#pablo'
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      Forgot password?
+                    </Button>
+                  </div>
+                </Card>
+              </Col>
+            </Row>
           </ModalBody>
-          <ModalFooter>
-            <div className='mr-auto ml-2'>
-              New to DISH DELIVERY? Create an account.
-            </div>
-            <Button color='danger' onClick={this.props.onLoginModalToggle}>
-              Close
-            </Button>
-          </ModalFooter>
         </Modal>
       </React.Fragment>
     );
