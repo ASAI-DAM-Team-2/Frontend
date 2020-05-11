@@ -31,7 +31,7 @@ const items = [
     caption: 'Here it is',
   },
 ];
-
+//
 function HomePage() {
   const mainDishes = [
     {
