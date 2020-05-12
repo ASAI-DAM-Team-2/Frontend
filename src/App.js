@@ -5,6 +5,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from './pages/homepage/HomePage';
 import DishesPage from './pages/dishes/Dishes';
+import RestaurantsPage from './pages/restaurants/RestaurantsPage';
+import RegisterPage from './pages/registerpage/RegisterPage';
 import IndexHeader from './components/Headers/IndexHeader.js';
 import RegisterPage from './pages/registerpage/RegisterPage';
 
@@ -30,14 +32,16 @@ function App() {
   return (
     <div>
       <div>
-        <IndexHeader />
         <IndexNavbar onLoginModalToggle={handleLoginModalTogle} />
       </div>
       <div>
         <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/dishes' component={DishesPage} />
-          <Route path='/register' component={RegisterPage} />
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route path='/dishes' component={DishesPage} />
+            <Route path='/register' component={RegisterPage} />
+            <Route path='/restaurants' component={RestaurantsPage} />
+          </Switch>
         </Switch>
       </div>
       <LoginModal

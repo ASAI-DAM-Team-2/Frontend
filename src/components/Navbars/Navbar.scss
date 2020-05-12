@@ -1,0 +1,27 @@
+.navbar-text {
+  cursor: pointer;
+}
+
+// .navbar-transparent .navbar-title {
+//   &:hover {
+//     color: white;
+//   }
+// }
+
+// .navbar-title {
+//   &:hover {
+//     color: rgb(117, 117, 117);
+//   }
+// }
+
+.navbar-transparent #navbar-brand {
+  &:hover {
+    color: white;
+  }
+}
+
+#navbar-brand {
+  &:hover {
+    color: rgb(117, 117, 117);
+  }
+}

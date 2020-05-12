@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-
+import React from 'react';
 // reactstrap components
 import {
   Button,
@@ -13,80 +12,87 @@ import {
 } from 'reactstrap';
 import Alert from '../../components/alert/Alert';
 
-class RegisterPage extends Component {
-  state = {
-    alert_el: null,
-  };
-
-  handleSubmit(event) {
-    event.preventDefault();
-    // when there will be ajax call true will be changed to its result
-    if (true) {
-      this.setState({
-        alert_el: <Alert message='Registered successfully' type='success' />,
-      });
-      // there will have to be more if else to determinate what went wrong in ajax call
-    } else {
-      this.setState({
-        alert_el: <Alert message='Something went wrong' type='warning' />,
-      });
-    }
-    // here will be ajax api call for register
-  }
-
-  render() {
-    return (
-      <React.Fragment>
+function RegisterPage() {
+  document.documentElement.classList.remove('nav-open');
+  React.useEffect(() => {
+    document.body.classList.add('register-page');
+    return function cleanup() {
+      document.body.classList.remove('register-page');
+    };
+  });
+  return (
+    <React.Fragment>
+      <div
+        className='page-header'
+        style={{
+          backgroundImage:
+            'url(' + require('../../assets/img/login-image.jpg') + ')',
+        }}
+      >
         <div className='filter' />
         <Container>
           <Row>
             <Col className='ml-auto mr-auto' lg='4'>
               <Card className='card-register ml-auto mr-auto'>
-                <h3 className='title mx-auto'>Register</h3>
-                {this.state.alert_el}
-                <Form
-                  className='register-form'
-                  method='POST'
-                  onSubmit={(event) => this.handleSubmit(event)}
-                >
-                  <FormGroup>
-                    <label htmlFor='email'>*Email</label>
-                    <Input
-                      placeholder='Email'
-                      id='email'
-                      type='email'
-                      required
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <label htmlFor='username'>*User name</label>
-                    <Input
-                      placeholder='User Name'
-                      id='username'
-                      type='text'
-                      required
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <label id='password'>*Password</label>
-                    <Input
-                      placeholder='Password'
-                      id='password'
-                      type='password'
-                      required
-                    />
-                  </FormGroup>
-                  <Button type='submit' className='w-100' color='danger'>
+                <h3 className='title mx-auto'>Welcome</h3>
+                <div className='social-line text-center'>
+                  <Button
+                    className='btn-neutral btn-just-icon mr-1'
+                    color='facebook'
+                    href='#pablo'
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    <i className='fa fa-facebook-square' />
+                  </Button>
+                  <Button
+                    className='btn-neutral btn-just-icon mr-1'
+                    color='google'
+                    href='#pablo'
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    <i className='fa fa-google-plus' />
+                  </Button>
+                  <Button
+                    className='btn-neutral btn-just-icon'
+                    color='twitter'
+                    href='#pablo'
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    <i className='fa fa-twitter' />
+                  </Button>
+                </div>
+                <Form className='register-form'>
+                  <label>Email</label>
+                  <Input placeholder='Email' type='text' />
+                  <label>Password</label>
+                  <Input placeholder='Password' type='password' />
+                  <Button block className='btn-round' color='danger'>
                     Register
                   </Button>
                 </Form>
+                <div className='forgot'>
+                  <Button
+                    className='btn-link'
+                    color='danger'
+                    href='#pablo'
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    Forgot password?
+                  </Button>
+                </div>
               </Card>
             </Col>
           </Row>
         </Container>
-      </React.Fragment>
-    );
-  }
+        <div className='footer register-footer text-center'>
+          <h6>
+            © {new Date().getFullYear()}, made with{' '}
+            <i className='fa fa-heart heart' /> by Creative Tim
+          </h6>
+        </div>
+      </div>
+    </React.Fragment>
+  );
 }
 
 export default RegisterPage;
