@@ -5,6 +5,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from './pages/homepage/HomePage';
 import DishesPage from './pages/dishes/Dishes';
+import RestaurantsPage from './pages/restaurants/RestaurantsPage';
+import RegisterPage from './pages/registerpage/RegisterPage';
 import IndexHeader from './components/Headers/IndexHeader.js';
 
 import IndexNavbar from './components/Navbars/IndexNavbar.js';
@@ -37,6 +39,8 @@ function App() {
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route path='/dishes' component={DishesPage} />
+            <Route path='/register' component={RegisterPage} />
+            <Route path='/restaurants' component={RestaurantsPage} />
           </Switch>
         </Switch>
       </div>

@@ -1,6 +1,8 @@
 import React from 'react';
 // nodejs library that concatenates strings
 import classnames from 'classnames';
+import './Navbar.scss';
+import { withRouter } from 'react-router-dom';
 // reactstrap components
 import {
   Button,
@@ -13,7 +15,7 @@ import {
   Container,
 } from 'reactstrap';
 
-function IndexNavbar(props) {
+const IndexNavbar = ({ onLoginModalToggle, history }) => {
   const [navbarColor, setNavbarColor] = React.useState('navbar-transparent');
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
 
@@ -48,12 +50,12 @@ function IndexNavbar(props) {
       <Container>
         <div className='navbar-translate'>
           <NavbarBrand
+            className='navbar-brand'
             data-placement='bottom'
-            href='/index'
-            target='_blank'
+            onClick={() => history.push('/')}
             title='Taste it, everywhere, everywhen.'
           >
-            Dish delivery
+            <span className='navbar-title'>Dish delivery</span>
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
@@ -118,10 +120,7 @@ function IndexNavbar(props) {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                href='#'
-                onClick={props.onLoginModalToggle}
-              >
+              <NavLink href='#' onClick={onLoginModalToggle}>
                 <i className='nc-icon nc-book-bookmark' /> Login
               </NavLink>
             </NavItem>
@@ -129,8 +128,7 @@ function IndexNavbar(props) {
               <Button
                 className='btn-round'
                 color='danger'
-                href='#pablo'
-                target='_blank'
+                onClick={() => history.push('register')}
               >
                 Sign up
               </Button>
@@ -140,6 +138,6 @@ function IndexNavbar(props) {
       </Container>
     </Navbar>
   );
-}
+};
 
-export default IndexNavbar;
+export default withRouter(IndexNavbar);
