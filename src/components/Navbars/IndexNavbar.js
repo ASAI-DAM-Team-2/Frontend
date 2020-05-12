@@ -132,7 +132,7 @@ const IndexNavbar = ({ onLoginModalToggle, history }) => {
                 onClick={() => history.push('register')}
               >
                 Sign up
-              </NavLink>
+              </Button>
             </NavItem>
           </Nav>
         </Collapse>
