@@ -8,7 +8,6 @@ import DishesPage from './pages/dishes/Dishes';
 import RestaurantsPage from './pages/restaurants/RestaurantsPage';
 import RegisterPage from './pages/registerpage/RegisterPage';
 import IndexHeader from './components/Headers/IndexHeader.js';
-import RegisterPage from './pages/registerpage/RegisterPage';
 
 import IndexNavbar from './components/Navbars/IndexNavbar.js';
 // import IndexHeader from 'components/Headers/IndexHeader.js';
