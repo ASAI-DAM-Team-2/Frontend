@@ -13,6 +13,7 @@ import {
 import DishCard from '../../components/dish-card/DishCard';
 
 import './HomePage.scss';
+import IndexHeader from '../../components/Headers/IndexHeader';
 
 const items = [
   {
@@ -115,87 +116,90 @@ function HomePage() {
     setActiveIndex(newIndex);
   };
   return (
-    <div className='homepage'>
-      <div>
-        <div className='section pt-o' id='carousel'>
-          <Container>
-            <Row>
-              <Col className='ml-auto mr-auto' md='8'>
-                <Card className='page-carousel'>
-                  <Carousel
-                    activeIndex={activeIndex}
-                    next={next}
-                    previous={previous}
-                  >
-                    <CarouselIndicators
-                      items={items}
+    <div>
+      <IndexHeader />
+      <div className='homepage'>
+        <div>
+          <div className='section pt-o' id='carousel'>
+            <Container>
+              <Row>
+                <Col className='ml-auto mr-auto' md='8'>
+                  <Card className='page-carousel'>
+                    <Carousel
                       activeIndex={activeIndex}
-                      onClickHandler={goToIndex}
-                    />
-                    {items.map((item) => {
-                      return (
-                        <CarouselItem
-                          onExiting={onExiting}
-                          onExited={onExited}
-                          key={item.src}
-                        >
-                          <img src={item.src} alt={item.altText} />
-                          <CarouselCaption
-                            captionText={item.caption}
-                            captionHeader=''
-                          />
-                        </CarouselItem>
-                      );
-                    })}
-                    <a
-                      className='left carousel-control carousel-control-prev'
-                      data-slide='prev'
-                      href='#pablo'
-                      onClick={(e) => {
-                        e.preventDefault();
-                        previous();
-                      }}
-                      role='button'
+                      next={next}
+                      previous={previous}
                     >
-                      <span className='fa fa-angle-left' />
-                      <span className='sr-only'>Previous</span>
-                    </a>
-                    <a
-                      className='right carousel-control carousel-control-next'
-                      data-slide='next'
-                      href='#pablo'
-                      onClick={(e) => {
-                        e.preventDefault();
-                        next();
-                      }}
-                      role='button'
-                    >
-                      <span className='fa fa-angle-right' />
-                      <span className='sr-only'>Next</span>
-                    </a>
-                  </Carousel>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
-        </div>{' '}
+                      <CarouselIndicators
+                        items={items}
+                        activeIndex={activeIndex}
+                        onClickHandler={goToIndex}
+                      />
+                      {items.map((item) => {
+                        return (
+                          <CarouselItem
+                            onExiting={onExiting}
+                            onExited={onExited}
+                            key={item.src}
+                          >
+                            <img src={item.src} alt={item.altText} />
+                            <CarouselCaption
+                              captionText={item.caption}
+                              captionHeader=''
+                            />
+                          </CarouselItem>
+                        );
+                      })}
+                      <a
+                        className='left carousel-control carousel-control-prev'
+                        data-slide='prev'
+                        href='#pablo'
+                        onClick={(e) => {
+                          e.preventDefault();
+                          previous();
+                        }}
+                        role='button'
+                      >
+                        <span className='fa fa-angle-left' />
+                        <span className='sr-only'>Previous</span>
+                      </a>
+                      <a
+                        className='right carousel-control carousel-control-next'
+                        data-slide='next'
+                        href='#pablo'
+                        onClick={(e) => {
+                          e.preventDefault();
+                          next();
+                        }}
+                        role='button'
+                      >
+                        <span className='fa fa-angle-right' />
+                        <span className='sr-only'>Next</span>
+                      </a>
+                    </Carousel>
+                  </Card>
+                </Col>
+              </Row>
+            </Container>
+          </div>{' '}
+        </div>
+        <Container>
+          <Row>
+            {mainDishes.slice(0, 3).map((value, index) => {
+              return (
+                <Col className='ml-auto mr-auto' key={index}>
+                  <DishCard
+                    title={value.title}
+                    description={value.description}
+                    img={value.img}
+                  />
+                </Col>
+              );
+            })}
+          </Row>
+        </Container>
+        <div />
       </div>
-      <Container>
-        <Row>
-          {mainDishes.slice(0, 3).map((value, index) => {
-            return (
-              <Col className='ml-auto mr-auto' key={index}>
-                <DishCard
-                  title={value.title}
-                  description={value.description}
-                  img={value.img}
-                />
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
-      <div />
     </div>
   );
 }

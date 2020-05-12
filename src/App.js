@@ -31,7 +31,6 @@ function App() {
   return (
     <div>
       <div>
-        <IndexHeader />
         <IndexNavbar onLoginModalToggle={handleLoginModalTogle} />
       </div>
       <div>

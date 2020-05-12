@@ -50,12 +50,12 @@ const IndexNavbar = ({ onLoginModalToggle, history }) => {
       <Container>
         <div className='navbar-translate'>
           <NavbarBrand
-            className='navbar-brand'
+            id='navbar-brand'
             data-placement='bottom'
             onClick={() => history.push('/')}
             title='Taste it, everywhere, everywhen.'
           >
-            <span className='navbar-title'>Dish delivery</span>
+            <span className='navbar-text'>Dish delivery</span>
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
