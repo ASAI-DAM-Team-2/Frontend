@@ -11,7 +11,14 @@ class DishesPage extends React.Component {
   }
 
   render() {
-    return <div className='dishes-page'>Dishes</div>;
+    const { collections } = this.state;
+    return (
+      <div className='dishes-page'>
+        {collections.map(({ id, ...othercollectionProps }) => (
+          <DishesPreview key={id} {...othercollectionProps} />
+        ))}
+      </div>
+    );
   }
 }
 
