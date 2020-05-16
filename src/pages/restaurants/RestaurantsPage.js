@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import IndexHeader from '../../components/Headers/IndexHeader';
+// import IndexHeader from '../../components/Headers/IndexHeader';
+import './RestaurantsPage.scss';
 
 class RestaurantsPage extends Component {
   state = {};
   render() {
     return (
       <React.Fragment>
-        <IndexHeader />
-        <div className='restaurants-layout'>Hello World!</div>
+        <div className='restaurants-layout'>
+          <div className='card restaurants-card'>
+            <div>Hello World</div>
+          </div>
+        </div>
       </React.Fragment>
     );
   }
