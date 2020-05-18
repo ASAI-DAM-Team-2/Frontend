@@ -118,7 +118,7 @@ class IndexNavbar extends React.Component {
               className={classnames('navbar-toggler navbar-toggler', {
                 toggled: navbarCollapse,
               })}
-              onClick={this.toggleNavbarCollapse}
+              onClick={this.toggleNavbarCollapse.bind(this)}
             >
               <span className='navbar-toggler-bar bar1' />
               <span className='navbar-toggler-bar bar2' />
