@@ -33,14 +33,22 @@
   margin-left: 0px;
 }
 
-.filter-button {
-  display: flex;
-  flex-flow: column;
-  justify-content: flex-end;
-}
-
 .restaurant-item {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+}
+
+.action-buttons {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.filter-button,
+.create-button {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  padding-left: 5px;
 }

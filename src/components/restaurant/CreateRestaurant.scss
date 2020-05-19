@@ -1,0 +1,19 @@
+.add-button {
+  display: inline-block;
+  white-space: nowrap;
+}
+// .add-modal {
+//   //   background-color: white;
+// }
+
+.add-modal .modal-content {
+  background-color: #edf2f7 !important;
+}
+
+.modal-header {
+  display: flex !important;
+  -ms-flex-align: start;
+  align-items: flex-start !important;
+  -ms-flex-pack: justify;
+  justify-content: space-between !important;
+}

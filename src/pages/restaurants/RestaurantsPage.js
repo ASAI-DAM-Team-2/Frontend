@@ -13,10 +13,13 @@ import {
 } from 'reactstrap';
 // import IndexHeader from '../../components/Headers/IndexHeader';
 import './RestaurantsPage.scss';
-
+import RestaurantList from '../../components/restaurant/RestaurantList';
+import CreateRestaurant from '../../components/restaurant/CreateRestaurant';
+import { connect } from 'react-redux';
 class RestaurantsPage extends Component {
   state = {};
   render() {
+    const { restaurants } = this.props;
     return (
       <React.Fragment>
         <div className='restaurants-layout'>
@@ -27,58 +30,30 @@ class RestaurantsPage extends Component {
               style={{ width: '100%' }}
             >
               <div id='restaurants-menu' className='form-row'>
-                <FormGroup className='col-md-6'>
+                <FormGroup className='col-md-4 col-sm-4'>
                   <Label for='inputCity'>By Company</Label>
                   <Input type='select' name='select' id='inputState'>
                     <option>Choose...</option>
                     <option>...</option>
                   </Input>
                 </FormGroup>
-                <FormGroup className='col-md-4'>
+                <FormGroup className='col-md-4 col-sm-3'>
                   <Label for='inputState'>Restaurants</Label>
                   <Input type='text' id='inputCity' />
                 </FormGroup>
-                <FormGroup className='filter-button col-md-2'>
-                  <div className=''>
+                <FormGroup className='action-buttons col-md-4 col-sm-5'>
+                  <div className='filter-button'>
                     <Button type='submit' color='primary'>
                       Filter
                     </Button>
                   </div>
+                  <div className='create-button'>
+                    <CreateRestaurant />
+                  </div>
                 </FormGroup>
               </div>
               <div className='restaurants-list'>
-                <ListGroup flush>
-                  <ListGroupItem className='restaurant-item'>
-                    <div className='restaurants-description'>
-                      Cras justo odio
-                    </div>
-                    <div className='restaurant-buttons'>
-                      <Button className='btn-link' color='primary'>
-                        edit
-                      </Button>
-                    </div>
-                  </ListGroupItem>
-                  <ListGroupItem className='restaurant-item'>
-                    <div className='restaurants-description'>
-                      Dapibus ac facilisis in
-                    </div>
-                    <div className='restaurant-buttons'>
-                      <Button className='btn-link' color='primary'>
-                        edit
-                      </Button>
-                    </div>
-                  </ListGroupItem>
-                  <ListGroupItem className='restaurant-item'>
-                    <div className='restaurants-description'>
-                      Vestibulum at eros
-                    </div>
-                    <div className='restaurant-buttons'>
-                      <Button className='btn-link' color='primary'>
-                        edit
-                      </Button>
-                    </div>
-                  </ListGroupItem>
-                </ListGroup>
+                <RestaurantList restaurants={restaurants} />
               </div>
             </Card>
           </Container>
@@ -91,4 +66,10 @@ class RestaurantsPage extends Component {
   }
 }
 
-export default RestaurantsPage;
+const mapStateToProps = (state) => {
+  return {
+    restaurants: state.restaurant.restaurants,
+  };
+};
+
+export default connect(mapStateToProps)(RestaurantsPage);
