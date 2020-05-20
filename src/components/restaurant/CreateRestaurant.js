@@ -22,12 +22,14 @@ class CreateRestaurant extends Component {
     keyboard: true,
     restaurantName: '',
     restaurantAddress: '',
-    companySelect: 'null',
+    companyId: '1',
+    createTitle: 'create',
   };
 
   toggle = () => {
     console.log('modal');
     this.setState({ modal: !this.state.modal });
+    this.setState({ createTitle: 'create' });
   };
 
   changeBackdrop = (e) => {
@@ -50,14 +52,26 @@ class CreateRestaurant extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    const { restaurantName, restaurantAddress } = this.state;
+    const { restaurantName, restaurantAddress, companyId } = this.state;
     // console.log(this.props);
-    this.props.createRestaurant({ restaurantName, restaurantAddress });
-    // this.toggle();
+    this.props.createRestaurant({
+      restaurantName,
+      restaurantAddress,
+      companyId,
+    });
+    this.setState({ createTitle: 'creating...' });
   };
 
-  componentDidUpdate() {
-    console.log('did update');
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.createLoading !== this.props.createLoading &&
+      !this.props.createLoading &&
+      this.state.modal
+    ) {
+      this.toggle();
+    }
+
+    // console.log('did update', prevProps);
   }
 
   render() {
@@ -104,25 +118,26 @@ class CreateRestaurant extends Component {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for='companySelect'>Associated with company</Label>
+                <Label for='companyId'>Associated with company</Label>
                 <Input
                   type='select'
                   name='select'
-                  id='companySelect'
+                  id='companyId'
                   onChange={this.handleChange}
                 >
-                  <option>Coca cola</option>
-                  <option>Pepsi</option>
-                  <option>Pizza Hut</option>
-                  <option>Doritos s.r.o</option>
-                  <option>Mamamia</option>
+                  <option value='1'>Coca cola</option>
+                  <option value='2'>Pepsi</option>
+                  <option value='3'>Pizza Hut</option>
+                  <option value='4'>Doritos s.r.o</option>
+                  <option value='5'>Mamamia</option>
                 </Input>
               </FormGroup>
-
-              <Button color='primary'>Create</Button>
-              <Button color='secondary' onClick={this.toggle.bind(this)}>
-                Cancel
-              </Button>
+              <div className='action-buttons'>
+                <Button color='danger'>{this.state.createTitle}</Button>
+                <Button color='secondary' onClick={this.toggle.bind(this)}>
+                  Cancel
+                </Button>
+              </div>
             </Form>
           </ModalBody>
         </Modal>

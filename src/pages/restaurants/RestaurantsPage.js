@@ -16,10 +16,28 @@ import './RestaurantsPage.scss';
 import RestaurantList from '../../components/restaurant/RestaurantList';
 import CreateRestaurant from '../../components/restaurant/CreateRestaurant';
 import { connect } from 'react-redux';
+import { fetchRestaurants } from '../../store/actions/restaurantActions';
+
 class RestaurantsPage extends Component {
-  state = {};
+  state = {
+    modal: 'OPENED',
+  };
+
+  constructor(props) {
+    super(props);
+    this.createModal = React.createRef();
+  }
+
+  componentDidMount() {
+    this.props.dispatch(fetchRestaurants());
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log('restaurantPage', prevProps);
+  }
+
   render() {
-    const { restaurants } = this.props;
+    const { restaurants, createLoading, deleteLoading } = this.props;
     return (
       <React.Fragment>
         <div className='restaurants-layout'>
@@ -48,18 +66,18 @@ class RestaurantsPage extends Component {
                     </Button>
                   </div>
                   <div className='create-button'>
-                    <CreateRestaurant />
+                    <CreateRestaurant createLoading={createLoading} />
                   </div>
                 </FormGroup>
               </div>
               <div className='restaurants-list'>
-                <RestaurantList restaurants={restaurants} />
+                <RestaurantList
+                  restaurants={restaurants}
+                  deleteLoading={deleteLoading}
+                />
               </div>
             </Card>
           </Container>
-        </div>
-        <div className='card restaurants-card'>
-          <div>Hello World</div>
         </div>
       </React.Fragment>
     );
@@ -69,6 +87,9 @@ class RestaurantsPage extends Component {
 const mapStateToProps = (state) => {
   return {
     restaurants: state.restaurant.restaurants,
+    createLoading: state.restaurant.createLoading,
+    fetchLoading: state.restaurant.fetchLoading,
+    deleteLoading: state.restaurant.deleteLoading,
   };
 };
 

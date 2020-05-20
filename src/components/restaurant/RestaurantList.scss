@@ -1,0 +1,21 @@
+.restaurant-buttons {
+  display: flex;
+  flex-flow: row;
+}
+.remove-button,
+.edit-button {
+  display: inline-block;
+  width: 50px;
+}
+
+.button-form {
+  display: flex;
+  align-items: center;
+}
+
+.spinner-loading {
+  padding-left: 25px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
