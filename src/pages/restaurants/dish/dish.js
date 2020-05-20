@@ -9,14 +9,17 @@ class Dish extends Component {
       <React.Fragment>
         <Row className="mb-2">
           <Col>
-            <Button color="secondary" onClick="{this.props.closeDish()}">
+            <Button color="secondary" onClick={this.props.closeDish}>
               &#8592;&nbsp;BACK
             </Button>
             <div className="dish-heading">{this.props.data.heading}</div>
             <div className="dish-price">{this.props.data.price}</div>
             <div
               className="dish-delivery"
-              onClick="{this.props.dishDelivery(this.props.data.heading, this.props.data.id)}"
+              onClick={this.props.dishDelivery(
+                this.props.data.heading,
+                this.props.data.id
+              )}
             >
               Delivery
             </div>

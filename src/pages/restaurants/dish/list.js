@@ -5,27 +5,35 @@ import Dish from "./dish";
 import "./list.scss";
 
 class View extends Component {
+  closeDish = () => {
+    if (this.state.dishes !== null) {
+      this.setState(() => {
+        return { dish_el: null };
+      });
+    }
+  };
+
   showDish(dish) {
-    this.setState(() => {
-      return {
-        dish_el: (
-          <Dish
-            data={dish}
-            closeDish={this.closeDish}
-            dishDelivery={this.dishDelivery}
-          />
-        ),
-      };
-    });
+    console.log(dish);
+    if (this.state.dish_el === null) {
+      this.setState(() => {
+        return {
+          dish_el: (
+            <Dish
+              data={dish}
+              closeDish={this.closeDish}
+              dishDelivery={this.dishDelivery}
+            />
+          ),
+        };
+      });
+    }
   }
-  closeDish() {
-    this.setState(() => {
-      return { dish_el: null };
-    });
-  }
+
   dishDelivery(heading, id) {
     console.log("Dish delivery " + heading + " id " + id);
   }
+
   state = {
     dish_el: null,
     image: "/user.jpg",
@@ -73,7 +81,7 @@ class View extends Component {
                   <br />
                   <img src={dish.image} alt="Image" />
                   <br />
-                  <Button color="info" onClick="this.showDish(dish)">
+                  <Button color="info" onClick={() => this.showDish(dish)}>
                     Show detail
                   </Button>
                 </div>
