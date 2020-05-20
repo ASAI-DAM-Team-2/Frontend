@@ -1,12 +1,18 @@
 .dish-heading,
 .dish-price {
   font-size: 40px;
-  display: inline-block;
+  display: block;
+  margin: 0 auto;
 }
 
+.dish-back {
+  display: block;
+  margin-right: auto;
+}
 .dish-delivery {
   padding: 5px 20px;
-  display: inline-block;
+  display: block;
+  margin-left: auto;
 }
 
 .dish-image img {

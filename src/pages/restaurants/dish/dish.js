@@ -9,7 +9,11 @@ class Dish extends Component {
       <React.Fragment>
         <Row className="mb-5 dish-top">
           <Col className="d-flex">
-            <Button color="secondary" onClick={this.props.closeDish}>
+            <Button
+              className="dish-back"
+              color="secondary"
+              onClick={this.props.closeDish}
+            >
               &#8592;&nbsp;BACK
             </Button>
             <div className="dish-heading">{this.props.data.heading}</div>
