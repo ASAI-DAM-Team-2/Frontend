@@ -16,10 +16,12 @@ class Dish extends Component {
             <div className="dish-price">{this.props.data.price}</div>
             <div
               className="dish-delivery"
-              onClick={this.props.dishDelivery(
-                this.props.data.heading,
-                this.props.data.id
-              )}
+              onClick={() => 
+                this.props.dishDelivery(
+                  this.props.data.heading,
+                  this.props.data.id
+                )
+              }
             >
               Delivery
             </div>

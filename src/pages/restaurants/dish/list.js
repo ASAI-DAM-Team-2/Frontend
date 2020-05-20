@@ -71,23 +71,27 @@ class View extends Component {
           <Row className="list-deatil">
             <Col>{this.state.dish_el}</Col>
           </Row>
-          <Row>
-            <Col className="text-center">
-              {this.state.dishes.map((dish) => (
-                <div className="list-dish">
-                  {dish.heading}
-                  <br />
-                  {dish.price}
-                  <br />
-                  <img src={dish.image} alt="Image" />
-                  <br />
-                  <Button color="info" onClick={() => this.showDish(dish)}>
-                    Show detail
-                  </Button>
-                </div>
-              ))}
-            </Col>
-          </Row>
+          {this.state.dish_el === null ? (
+            <Row>
+              <Col className="text-center">
+                {this.state.dishes.map((dish) => (
+                  <div className="list-dish">
+                    {dish.heading}
+                    <br />
+                    {dish.price}
+                    <br />
+                    <img src={dish.image} alt="Image" />
+                    <br />
+                    <Button color="info" onClick={() => this.showDish(dish)}>
+                      Show detail
+                    </Button>
+                  </div>
+                ))}
+              </Col>
+            </Row>
+          ) : (
+            ""
+          )}
         </Container>
       </React.Fragment>
     );
