@@ -68,9 +68,6 @@ class View extends Component {
             </Col>
           </Row>
           <hr />
-          <Row className="list-deatil">
-            <Col>{this.state.dish_el}</Col>
-          </Row>
           {this.state.dish_el === null ? (
             <Row>
               <Col className="text-center">
@@ -90,7 +87,9 @@ class View extends Component {
               </Col>
             </Row>
           ) : (
-            ""
+            <Row className="list-deatil">
+              <Col>{this.state.dish_el}</Col>
+            </Row>
           )}
         </Container>
       </React.Fragment>
