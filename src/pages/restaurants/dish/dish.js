@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
+import "./dish.scss";
 
 class Dish extends Component {
   state = {};
@@ -7,7 +8,7 @@ class Dish extends Component {
     return (
       <React.Fragment>
         <Container>
-          <Row className="dish-heading">
+          <Row className="mb-2">
             <Col>
               <Button color="secondary" onClick="{data.closeDish()}">
                 &#8592;&nbsp;BACK
@@ -23,7 +24,7 @@ class Dish extends Component {
             </Col>
           </Row>
           <Row>
-            <Col className="dish-info">
+            <Col>
               <p>{data.info}</p>
             </Col>
             <Col className="dish-image">{data.image}</Col>
