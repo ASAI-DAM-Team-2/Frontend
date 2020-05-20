@@ -16,6 +16,7 @@
     "react-datetime": "2.16.3",
     "react-dom": "^16.13.1",
     "react-file-drop": "^3.0.6",
+    "react-multi-select-component": "^2.0.7",
     "react-router": "5.0.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",

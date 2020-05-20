@@ -12,8 +12,9 @@ import {
   ListGroup,
   ListGroupItem,
 } from "reactstrap";
-// import IndexHeader from '../../components/Headers/IndexHeader';
 import "./UserPage.scss";
+import Alert from "../../components/alert/Alert";
+import MSelect from "../../components/multiselect/multiselect";
 
 const drop_styles = {
   border: "1px dashed black",
@@ -23,7 +24,17 @@ const drop_styles = {
 };
 
 class UserPage extends Component {
-  state = {};
+  state = {
+    alert_el: null,
+    options: [
+      { label: "Grapes 🍇", value: "grapes" },
+      { label: "Mango 🥭", value: "mango" },
+      { label: "Mongo 2 🥭", value: "mango2" },
+      { label: "Mango 3🥭", value: "mango3" },
+      { label: "Strawberry 🍓", value: "strawberry", disabled: true },
+      ,
+    ],
+  };
   render() {
     return (
       <React.Fragment>
@@ -36,6 +47,7 @@ class UserPage extends Component {
             >
               <h1 className="text-center">User settings</h1>
               <div id="user-menu" className="form-row text-center">
+                {this.state.alert_el}
                 <div className="w-25">
                   <img
                     src="/user.jpg"
@@ -50,8 +62,14 @@ class UserPage extends Component {
               </div>
               <div className="user-list">
                 <ListGroup flush>
+                  <ListGroupItem>
+                    <MSelect
+                      options={this.state.options}
+                      heading="Choose your allergens"
+                    />
+                  </ListGroupItem>
                   <ListGroupItem className="user-item">
-                    <div className="user-description">Cras justo odio</div>
+                    <div className="user-description">User name</div>
                     <div className="user-buttons">
                       <Button className="btn-link" color="primary">
                         edit
@@ -59,9 +77,7 @@ class UserPage extends Component {
                     </div>
                   </ListGroupItem>
                   <ListGroupItem className="user-item">
-                    <div className="user-description">
-                      Dapibus ac facilisis in
-                    </div>
+                    <div className="user-description">Current password</div>
                     <div className="user-buttons">
                       <Button className="btn-link" color="primary">
                         edit
@@ -69,7 +85,15 @@ class UserPage extends Component {
                     </div>
                   </ListGroupItem>
                   <ListGroupItem className="user-item">
-                    <div className="user-description">Vestibulum at eros</div>
+                    <div className="user-description">New password</div>
+                    <div className="user-buttons">
+                      <Button className="btn-link" color="primary">
+                        edit
+                      </Button>
+                    </div>
+                  </ListGroupItem>
+                  <ListGroupItem className="user-item">
+                    <div className="user-description">Repeat new password</div>
                     <div className="user-buttons">
                       <Button className="btn-link" color="primary">
                         edit
