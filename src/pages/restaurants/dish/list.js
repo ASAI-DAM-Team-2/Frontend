@@ -60,30 +60,33 @@ class View extends Component {
   render() {
     return (
       <React.Fragment>
-        <Container>
-          <Row className="mb-2">
-            <Col>
-              <div className="list-heading">
-                <img
-                  src={this.state.image}
-                  alt="Image"
-                  className="list-image"
-                />
-                <div className="list-heading__text">{this.state.heading}</div>
-                <br />
-                <br />
-                <br />
-                <br />
-                <div className="list-heading__address">
-                  {this.state.address}
+        <Container fluid className="list-top">
+          <Container>
+            <Row>
+              <Col className="list-heading-col">
+                <div className="list-heading">
+                  <img
+                    src={this.state.image}
+                    alt="Image"
+                    className="list-image"
+                  />
+                  <div className="list-heading__text">{this.state.heading}</div>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <div className="list-heading__address">
+                    {this.state.address}
+                  </div>
                 </div>
-              </div>
-            </Col>
-          </Row>
-          <hr />
+              </Col>
+            </Row>
+          </Container>
+        </Container>
+        <Container>
           {this.state.dish_el === null ? (
             <Row>
-              <Col className="text-center">
+              <Col className="text-center mt-4">
                 {this.state.dishes.map((dish) => (
                   <div className="list-dish">
                     {dish.heading}
@@ -103,6 +106,7 @@ class View extends Component {
             <div className="list-deatil">{this.state.dish_el}</div>
           )}
         </Container>
+        <div className="list-footer" />
       </React.Fragment>
     );
   }

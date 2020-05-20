@@ -7,7 +7,7 @@ class Dish extends Component {
   render() {
     return (
       <React.Fragment>
-        <Row className="mb-5">
+        <Row className="mb-5 dish-top">
           <Col className="d-flex">
             <Button color="secondary" onClick={this.props.closeDish}>
               &#8592;&nbsp;BACK
