@@ -39,7 +39,7 @@ class RestaurantsPage extends Component {
   render() {
     const { restaurants, createLoading, deleteLoading } = this.props;
     return (
-      <React.Fragment>
+      <div style={{ height: '100vh' }}>
         <div className='restaurants-layout'>
           <Container className='card-wrapper'>
             <Card
@@ -79,7 +79,7 @@ class RestaurantsPage extends Component {
             </Card>
           </Container>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
