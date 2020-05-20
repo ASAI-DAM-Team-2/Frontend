@@ -1,13 +1,19 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 
-import DishList from "../../components/restaurant/dishes/DishList";
+import DishList from "../../../components/restaurant/dishes/DishList";
+import { fetchRestaurantDishes } from "../../../store/actions/dishesActions";
 import { connect } from "react-redux";
 
-import Dish from "./dish";
+import DishView from "./DishView";
 import "./list.scss";
 
 class DishesListPage extends Component {
+  componentDidMount() {
+    console.log(this.state.restaurant_id);
+    this.props.dispatch(fetchRestaurantDishes(this.state.restaurant_id));
+    console.log(this.props);
+  }
   closeDish = () => {
     if (this.state.dishes !== null) {
       this.setState(() => {
@@ -21,7 +27,7 @@ class DishesListPage extends Component {
       this.setState(() => {
         return {
           dish_el: (
-            <Dish
+            <DishView
               data={dish}
               closeDish={this.closeDish}
               dishDelivery={this.dishDelivery}
@@ -37,28 +43,11 @@ class DishesListPage extends Component {
   }
 
   state = {
+    restaurant_id: 2,
     dish_el: null,
     image: "/user.jpg",
     heading: "Restaurant name",
     address: "Restaurant address",
-    dishes: [
-      {
-        heading: "Dish name 1",
-        price: "54.7 E",
-        id: 1,
-        image: "/user.jpg",
-        info:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis porta vulputate. Proin feugiat ornare justo, et faucibus tortor semper ac. Donec tristique pulvinar eros ullamcorper varius. Proin nec semper ipsum. Maecenas dignissim dolor aliquet ex ultricies luctus. Fusce porttitor orci sit amet bibendum scelerisque. Donec lectus diam, condimentum ac magna nec, maximus ultricies nibh. Vestibulum ipsum eros, consequat vel urna in, pretium posuere erat. Cras aliquet a ligula id gravida. ",
-      },
-      {
-        heading: "Dish name 2",
-        price: "59.7 E",
-        id: 2,
-        image: "/user.jpg",
-        info:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis porta vulputate. Proin feugiat ornare justo, et faucibus tortor semper ac. Donec tristique pulvinar eros ullamcorper varius. Proin nec semper ipsum. Maecenas dignissim dolor aliquet ex ultricies luctus. Fusce porttitor orci sit amet bibendum scelerisque. Donec lectus diam, condimentum ac magna nec, maximus ultricies nibh. Vestibulum ipsum eros, consequat vel urna in, pretium posuere erat. Cras aliquet a ligula id gravida. ",
-      },
-    ],
   };
   render() {
     const { dishes } = this.props;
@@ -91,7 +80,7 @@ class DishesListPage extends Component {
           {this.state.dish_el === null ? (
             <Row>
               <Col className="text-center mt-4">
-                <DishList dishes={dishes} />
+                <DishList dishes={dishes} showDish={this.showDish} />
               </Col>
             </Row>
           ) : (

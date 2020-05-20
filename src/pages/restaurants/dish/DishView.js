@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Button } from "reactstrap";
 import "./dish.scss";
 
-class Dish extends Component {
+class DishView extends Component {
   state = {};
   render() {
     return (
@@ -46,4 +46,4 @@ class Dish extends Component {
   }
 }
 
-export default Dish;
+export default DishView;
