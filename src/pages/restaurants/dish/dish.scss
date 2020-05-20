@@ -1,0 +1,46 @@
+.dish-heading,
+.dish-price {
+  font-size: 40px;
+  display: block;
+  margin: 0 auto;
+}
+
+.dish-back {
+  display: block;
+  margin-right: auto;
+}
+.dish-delivery {
+  padding: 5px 20px;
+  display: block;
+  margin-left: auto;
+}
+
+.dish-col-top {
+  display: flex;
+}
+
+.dish-image img {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.dish-footer {
+  display: block;
+  height: 200px;
+}
+
+.dish-top {
+  padding: 5px 5px 0 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .dish-col-top {
+    display: block;
+  }
+  .dish-delivery {
+    margin-left: 0;
+    margin-right: auto;
+  }
+}

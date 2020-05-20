@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Container,
   Row,
@@ -10,7 +10,7 @@ import {
   Card,
   ListGroup,
   ListGroupItem,
-} from 'reactstrap';
+} from "reactstrap";
 // import IndexHeader from '../../components/Headers/IndexHeader';
 import './RestaurantsPage.scss';
 import RestaurantList from '../../components/restaurant/RestaurantList';
@@ -40,12 +40,12 @@ class RestaurantsPage extends Component {
     const { restaurants, createLoading, deleteLoading } = this.props;
     return (
       <React.Fragment>
-        <div className='restaurants-layout'>
-          <Container className='card-wrapper'>
+        <div className="restaurants-layout">
+          <Container className="card-wrapper">
             <Card
-              id='restaurant-card'
-              className='card-plain'
-              style={{ width: '100%' }}
+              id="restaurant-card"
+              className="card-plain"
+              style={{ width: "100%" }}
             >
               <div id='restaurants-menu' className='form-row'>
                 <FormGroup className='col-md-4 col-sm-4'>

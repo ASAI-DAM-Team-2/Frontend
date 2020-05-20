@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route } from "react-router-dom";
 
-import HomePage from './pages/homepage/HomePage';
-import DishesPage from './pages/dishes/Dishes';
-import RestaurantsPage from './pages/restaurants/RestaurantsPage';
-import RegisterPage from './pages/registerpage/RegisterPage';
-import IndexHeader from './components/Headers/IndexHeader.js';
+import HomePage from "./pages/homepage/HomePage";
+import DishesPage from "./pages/dishes/Dishes";
+import RestaurantsPage from "./pages/restaurants/RestaurantsPage";
+import RegisterPage from "./pages/registerpage/RegisterPage";
+import UserPage from "./pages/userpage/UserPage";
+import DishList from "./pages/restaurants/dish/list";
+import IndexHeader from "./components/Headers/IndexHeader.js";
 
-import IndexNavbar from './components/Navbars/IndexNavbar.js';
+import IndexNavbar from "./components/Navbars/IndexNavbar.js";
 // import IndexHeader from 'components/Headers/IndexHeader.js';
 // import IndexHeader from 'components/Headers/IndexHeader.js';
 // import DemoFooter from 'components/Footers/DemoFooter.js';
 
-import LoginModal from './components/modals/LoginModal';
+import LoginModal from "./components/modals/LoginModal";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -36,10 +38,12 @@ function App() {
       <div>
         <Switch>
           <Switch>
-            <Route exact path='/' component={HomePage} />
-            <Route path='/dishes' component={DishesPage} />
-            <Route path='/register' component={RegisterPage} />
-            <Route path='/restaurants' component={RestaurantsPage} />
+            <Route exact path="/" component={HomePage} />
+            <Route path="/dishes" component={DishesPage} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/restaurants" component={RestaurantsPage} />
+            <Route path="/user" component={UserPage} />
+            <Route path="/list" component={DishList} />
           </Switch>
         </Switch>
       </div>
