@@ -7,16 +7,17 @@ class Dish extends Component {
   render() {
     return (
       <React.Fragment>
-        <Row className="mb-2">
-          <Col>
+        <Row className="mb-5">
+          <Col className="d-flex">
             <Button color="secondary" onClick={this.props.closeDish}>
               &#8592;&nbsp;BACK
             </Button>
             <div className="dish-heading">{this.props.data.heading}</div>
             <div className="dish-price">{this.props.data.price}</div>
-            <div
+            <Button
               className="dish-delivery"
-              onClick={() => 
+              color="primary"
+              onClick={() =>
                 this.props.dishDelivery(
                   this.props.data.heading,
                   this.props.data.id
@@ -24,7 +25,7 @@ class Dish extends Component {
               }
             >
               Delivery
-            </div>
+            </Button>
           </Col>
         </Row>
         <Row>
@@ -32,9 +33,10 @@ class Dish extends Component {
             <p>{this.props.data.info}</p>
           </Col>
           <Col className="dish-image">
-            <img src="{this.props.data.image}" alt="Image" />
+            <img src={this.props.data.image} alt="Image" />
           </Col>
         </Row>
+        <div className="dish-footer" />
       </React.Fragment>
     );
   }

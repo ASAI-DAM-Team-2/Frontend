@@ -40,8 +40,22 @@ class View extends Component {
     heading: "Restaurant name",
     address: "Restaurant address",
     dishes: [
-      { heading: "Dish name 1", price: "54.7 E", id: 1, image: "/user.jpg" },
-      { heading: "Dish name 2", price: "59.7 E", id: 2, image: "/user.jpg" },
+      {
+        heading: "Dish name 1",
+        price: "54.7 E",
+        id: 1,
+        image: "/user.jpg",
+        info:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis porta vulputate. Proin feugiat ornare justo, et faucibus tortor semper ac. Donec tristique pulvinar eros ullamcorper varius. Proin nec semper ipsum. Maecenas dignissim dolor aliquet ex ultricies luctus. Fusce porttitor orci sit amet bibendum scelerisque. Donec lectus diam, condimentum ac magna nec, maximus ultricies nibh. Vestibulum ipsum eros, consequat vel urna in, pretium posuere erat. Cras aliquet a ligula id gravida. ",
+      },
+      {
+        heading: "Dish name 2",
+        price: "59.7 E",
+        id: 2,
+        image: "/user.jpg",
+        info:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis porta vulputate. Proin feugiat ornare justo, et faucibus tortor semper ac. Donec tristique pulvinar eros ullamcorper varius. Proin nec semper ipsum. Maecenas dignissim dolor aliquet ex ultricies luctus. Fusce porttitor orci sit amet bibendum scelerisque. Donec lectus diam, condimentum ac magna nec, maximus ultricies nibh. Vestibulum ipsum eros, consequat vel urna in, pretium posuere erat. Cras aliquet a ligula id gravida. ",
+      },
     ],
   };
   render() {
@@ -87,9 +101,7 @@ class View extends Component {
               </Col>
             </Row>
           ) : (
-            <Row className="list-deatil">
-              <Col>{this.state.dish_el}</Col>
-            </Row>
+            <div className="list-deatil">{this.state.dish_el}</div>
           )}
         </Container>
       </React.Fragment>
