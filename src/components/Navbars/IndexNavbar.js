@@ -45,7 +45,7 @@ class IndexNavbar extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps);
+    // console.log(prevProps);
   }
 
   setNavbarClasses() {

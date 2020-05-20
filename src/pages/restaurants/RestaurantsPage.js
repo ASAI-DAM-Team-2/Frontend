@@ -12,11 +12,32 @@ import {
   ListGroupItem,
 } from "reactstrap";
 // import IndexHeader from '../../components/Headers/IndexHeader';
-import "./RestaurantsPage.scss";
+import './RestaurantsPage.scss';
+import RestaurantList from '../../components/restaurant/RestaurantList';
+import CreateRestaurant from '../../components/restaurant/CreateRestaurant';
+import { connect } from 'react-redux';
+import { fetchRestaurants } from '../../store/actions/restaurantActions';
 
 class RestaurantsPage extends Component {
-  state = {};
+  state = {
+    modal: 'OPENED',
+  };
+
+  constructor(props) {
+    super(props);
+    this.createModal = React.createRef();
+  }
+
+  componentDidMount() {
+    this.props.dispatch(fetchRestaurants());
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log('restaurantPage', prevProps);
+  }
+
   render() {
+    const { restaurants, createLoading, deleteLoading } = this.props;
     return (
       <React.Fragment>
         <div className="restaurants-layout">
@@ -26,69 +47,50 @@ class RestaurantsPage extends Component {
               className="card-plain"
               style={{ width: "100%" }}
             >
-              <div id="restaurants-menu" className="form-row">
-                <FormGroup className="col-md-6">
-                  <Label for="inputCity">By Company</Label>
-                  <Input type="select" name="select" id="inputState">
+              <div id='restaurants-menu' className='form-row'>
+                <FormGroup className='col-md-4 col-sm-4'>
+                  <Label for='inputCity'>By Company</Label>
+                  <Input type='select' name='select' id='inputState'>
                     <option>Choose...</option>
                     <option>...</option>
                   </Input>
                 </FormGroup>
-                <FormGroup className="col-md-4">
-                  <Label for="inputState">Restaurants</Label>
-                  <Input type="text" id="inputCity" />
+                <FormGroup className='col-md-4 col-sm-3'>
+                  <Label for='inputState'>Restaurants</Label>
+                  <Input type='text' id='inputCity' />
                 </FormGroup>
-                <FormGroup className="filter-button col-md-2">
-                  <div className="">
-                    <Button type="submit" color="primary">
+                <FormGroup className='action-buttons col-md-4 col-sm-5'>
+                  <div className='filter-button'>
+                    <Button type='submit' color='primary'>
                       Filter
                     </Button>
                   </div>
+                  <div className='create-button'>
+                    <CreateRestaurant createLoading={createLoading} />
+                  </div>
                 </FormGroup>
               </div>
-              <div className="restaurants-list">
-                <ListGroup flush>
-                  <ListGroupItem className="restaurant-item">
-                    <div className="restaurants-description">
-                      Cras justo odio
-                    </div>
-                    <div className="restaurant-buttons">
-                      <Button className="btn-link" color="primary">
-                        edit
-                      </Button>
-                    </div>
-                  </ListGroupItem>
-                  <ListGroupItem className="restaurant-item">
-                    <div className="restaurants-description">
-                      Dapibus ac facilisis in
-                    </div>
-                    <div className="restaurant-buttons">
-                      <Button className="btn-link" color="primary">
-                        edit
-                      </Button>
-                    </div>
-                  </ListGroupItem>
-                  <ListGroupItem className="restaurant-item">
-                    <div className="restaurants-description">
-                      Vestibulum at eros
-                    </div>
-                    <div className="restaurant-buttons">
-                      <Button className="btn-link" color="primary">
-                        edit
-                      </Button>
-                    </div>
-                  </ListGroupItem>
-                </ListGroup>
+              <div className='restaurants-list'>
+                <RestaurantList
+                  restaurants={restaurants}
+                  deleteLoading={deleteLoading}
+                />
               </div>
             </Card>
           </Container>
-        </div>
-        <div className="card restaurants-card">
-          <div>Hello World</div>
         </div>
       </React.Fragment>
     );
   }
 }
 
-export default RestaurantsPage;
+const mapStateToProps = (state) => {
+  return {
+    restaurants: state.restaurant.restaurants,
+    createLoading: state.restaurant.createLoading,
+    fetchLoading: state.restaurant.fetchLoading,
+    deleteLoading: state.restaurant.deleteLoading,
+  };
+};
+
+export default connect(mapStateToProps)(RestaurantsPage);
