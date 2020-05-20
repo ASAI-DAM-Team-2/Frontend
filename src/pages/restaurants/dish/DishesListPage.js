@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 
+import DishList from "../../components/restaurant/dishes/DishList";
+import { connect } from "react-redux";
+
 import Dish from "./dish";
 import "./list.scss";
 
-class View extends Component {
+class DishesListPage extends Component {
   closeDish = () => {
     if (this.state.dishes !== null) {
       this.setState(() => {
@@ -58,6 +61,7 @@ class View extends Component {
     ],
   };
   render() {
+    const { dishes } = this.props;
     return (
       <React.Fragment>
         <Container fluid className="list-top">
@@ -87,19 +91,7 @@ class View extends Component {
           {this.state.dish_el === null ? (
             <Row>
               <Col className="text-center mt-4">
-                {this.state.dishes.map((dish) => (
-                  <div className="list-dish">
-                    {dish.heading}
-                    <br />
-                    {dish.price}
-                    <br />
-                    <img src={dish.image} alt="Image" />
-                    <br />
-                    <Button color="info" onClick={() => this.showDish(dish)}>
-                      Show detail
-                    </Button>
-                  </div>
-                ))}
+                <DishList dishes={dishes} />
               </Col>
             </Row>
           ) : (
@@ -112,4 +104,10 @@ class View extends Component {
   }
 }
 
-export default View;
+const mapStateToProps = (state) => {
+  return {
+    dishes: state.restaurant.dishes,
+  };
+};
+
+export default connect(mapStateToProps)(DishesListPage);

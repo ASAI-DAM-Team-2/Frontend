@@ -43,7 +43,7 @@ function App() {
             <Route path="/register" component={RegisterPage} />
             <Route path="/restaurants" component={RestaurantsPage} />
             <Route path="/user" component={UserPage} />
-            <Route path="/list" component={DishList} />
+            <Route path="/list" component={DishesListPage} />
           </Switch>
         </Switch>
       </div>
