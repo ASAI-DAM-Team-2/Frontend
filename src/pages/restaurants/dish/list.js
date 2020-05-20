@@ -14,7 +14,6 @@ class View extends Component {
   };
 
   showDish(dish) {
-    console.log(dish);
     if (this.state.dish_el === null) {
       this.setState(() => {
         return {
