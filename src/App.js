@@ -8,6 +8,7 @@ import DishesPage from "./pages/dishes/Dishes";
 import RestaurantsPage from "./pages/restaurants/RestaurantsPage";
 import RegisterPage from "./pages/registerpage/RegisterPage";
 import UserPage from "./pages/userpage/UserPage";
+import DishList from "./pages/restaurants/dish/list";
 import IndexHeader from "./components/Headers/IndexHeader.js";
 
 import IndexNavbar from "./components/Navbars/IndexNavbar.js";
@@ -42,6 +43,7 @@ function App() {
             <Route path="/register" component={RegisterPage} />
             <Route path="/restaurants" component={RestaurantsPage} />
             <Route path="/user" component={UserPage} />
+            <Route path="/list" component={DishList} />
           </Switch>
         </Switch>
       </div>

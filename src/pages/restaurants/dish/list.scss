@@ -1,0 +1,38 @@
+.list-dish {
+  display: inline-block;
+  max-width: 400px;
+  min-height: 200px;
+  border: 1px solid black;
+  border-radius: 5%;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.list-heading {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.list-heading img {
+  height: 200px;
+  width: 200px;
+  display: inline-block;
+  margin-right: 10px;
+  float: left;
+}
+
+.list-heading__text,
+.list-heading__address {
+  display: inline-block;
+  float: left;
+}
+
+.list-heading__text {
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+.list-heading__address {
+  font-size: 30px;
+}
