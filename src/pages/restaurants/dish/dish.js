@@ -8,7 +8,7 @@ class Dish extends Component {
     return (
       <React.Fragment>
         <Row className="mb-5 dish-top">
-          <Col className="d-flex">
+          <Col className="dish-col-top">
             <Button
               className="dish-back"
               color="secondary"
