@@ -49,7 +49,7 @@ class DishesListPage extends Component {
   }
 
   state = {
-    restaurant_id: 106,
+    restaurant_id: 107,
     dish_el: null,
     image: "/user.jpg",
     heading: "Restaurant name",
