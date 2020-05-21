@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
 import { connect } from "react-redux";
-import {
-  deleteRestaurantDish,
-  fetchRestaurantDishes,
-} from "../../../store/actions/dishesActions";
+import { deleteRestaurantDish } from "../../../store/actions/dishesActions";
 
 import "./list.scss";
 
@@ -29,12 +26,12 @@ class DishList extends Component {
       <React.Fragment>
         {dishes &&
           dishes.map((dish) => (
-            <div className="list-dish">
-              {dish.heading}
+            <div className="list-dish" key={dish.dish_id}>
+              {dish.title}
               <br />
               {dish.price}
               <br />
-              <img src={dish.image} alt="Image" />
+              <img src={dish.picture} alt="" />
               <br />
               <Button color="info" onClick={() => this.props.showDish(dish)}>
                 Show detail

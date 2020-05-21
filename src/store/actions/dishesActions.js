@@ -22,7 +22,7 @@ export const fetchRestaurantDishes = (restaurant_id) => {
         });
       })
       .catch(function (err) {
-        dispatch({ type: "FETCH_DISHes_ERROR", err });
+        dispatch({ type: "FETCH_DISHES_ERROR", err });
       });
   };
 };
@@ -30,7 +30,7 @@ export const fetchRestaurantDishes = (restaurant_id) => {
 export const createRestaurantDish = (restaurant_id, dish) => {
   return (dispatch, getState) => {
     //make async call to database
-    dispatch({ type: "CREATE_DISH_STARTED" });
+    dispatch({ type: "CREATE_DISHES_STARTED" });
     axios
       .post(
         `https://allergyappbackend.azurewebsites.net/api/Dish`,
@@ -45,12 +45,12 @@ export const createRestaurantDish = (restaurant_id, dish) => {
       )
       .then((res) => {
         dispatch({
-          type: "CREATE_DISH_SUCCESS",
+          type: "CREATE_DISHES_SUCCESS",
           dishes: res.data,
         });
       })
       .catch((err) => {
-        dispatch({ type: "CREATE_DISH_ERROR", err });
+        dispatch({ type: "CREATE_DISHES_ERROR", err });
       });
     // dispatch({ type: 'CREATE_RESTAURANT', restaurant });
   };
@@ -59,7 +59,7 @@ export const createRestaurantDish = (restaurant_id, dish) => {
 export const deleteRestaurantDish = (id) => {
   return (dispatch, getState) => {
     //make async call to database
-    dispatch({ type: "DELETE_DISH_STARTED" });
+    dispatch({ type: "DELETE_DISHES_STARTED" });
     axios
       .delete(
         `https://allergyappbackend.azurewebsites.net/api/Dish/${id}`,
@@ -67,12 +67,12 @@ export const deleteRestaurantDish = (id) => {
       )
       .then((res) => {
         dispatch({
-          type: "DELETE_DISH_SUCCESS",
+          type: "DELETE_DISHES_SUCCESS",
           id: id,
         });
       })
       .catch((err) => {
-        dispatch({ type: "DELETE_DISH_ERROR", err });
+        dispatch({ type: "DELETE_DISHES_ERROR", err });
       });
     // dispatch({ type: 'CREATE_RESTAURANT', restaurant });
   };

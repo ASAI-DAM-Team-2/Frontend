@@ -10,7 +10,6 @@ import "./list.scss";
 
 class DishesListPage extends Component {
   componentDidMount() {
-    console.log(this.state.restaurant_id);
     this.props.dispatch(fetchRestaurantDishes(this.state.restaurant_id));
     console.log(this.props);
   }
@@ -58,11 +57,7 @@ class DishesListPage extends Component {
             <Row>
               <Col className="list-heading-col">
                 <div className="list-heading">
-                  <img
-                    src={this.state.image}
-                    alt="Image"
-                    className="list-image"
-                  />
+                  <img src={this.state.image} className="list-image" alt="" />
                   <div className="list-heading__text">{this.state.heading}</div>
                   <br />
                   <br />
@@ -94,8 +89,9 @@ class DishesListPage extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.dish.dishes);
   return {
-    dishes: state.restaurant.dishes,
+    dishes: state.dish.dishes,
   };
 };
 
