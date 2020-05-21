@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 
 import DishList from "../../../components/restaurant/dishes/DishList";
 import {
@@ -74,6 +74,16 @@ class DishesListPage extends Component {
           </Container>
         </Container>
         <Container>
+          <Row>
+            <Col>
+              <Button
+                color="success"
+                className="pt-2 pr-4 pb-2 pl-4 mt-3 ml-auto mr-auto d-block"
+              >
+                Create dish
+              </Button>
+            </Col>
+          </Row>
           {this.state.dish_el === null ? (
             <Row>
               <Col className="text-center mt-4">
