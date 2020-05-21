@@ -33,9 +33,21 @@ class DishList extends Component {
               <br />
               <img src={dish.picture} alt="" />
               <br />
-              <Button color="info" onClick={() => this.props.showDish(dish)}>
-                Show detail
-              </Button>
+              <div className="list-buttons">
+                <Button
+                  color="primary"
+                  onClick={() => this.props.showDish(dish)}
+                  className="list-button-show"
+                >
+                  Show detail
+                </Button>
+                <Button color="info" className="list-button-update">
+                  &#9998;
+                </Button>
+                <Button color="danger" className="list-button-delete">
+                  &#10006;
+                </Button>
+              </div>
             </div>
           ))}
       </React.Fragment>

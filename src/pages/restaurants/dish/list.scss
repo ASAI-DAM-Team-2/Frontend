@@ -46,3 +46,27 @@
   display: block;
   height: 200px;
 }
+
+.list-buttons,
+.list-button-show {
+  display: block;
+  width: 100%;
+}
+
+.list-button-show {
+  margin-bottom: 5px;
+}
+
+.list-button-update,
+.list-button-delete {
+  display: inline-block;
+  width: calc(50% - 5px);
+}
+
+.list-button-update {
+  margin-right: 5px;
+}
+
+.list-button-delete {
+  margin-left: 5px;
+}
