@@ -27,9 +27,9 @@ class DishList extends Component {
         {dishes &&
           dishes.map((dish) => (
             <div className="list-dish" key={dish.dish_id}>
-              {dish.title}
+              <b>{dish.title}</b>
               <br />
-              {dish.price}
+              <b>{dish.price}</b>
               <br />
               <img src={dish.picture} alt="" />
               <br />
