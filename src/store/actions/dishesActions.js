@@ -27,19 +27,21 @@ export const fetchRestaurantDishes = (restaurant_id) => {
   };
 };
 
-export const createRestaurantDish = (restaurant_id, dish) => {
+export const createDish = (dish) => {
   return (dispatch, getState) => {
     //make async call to database
     dispatch({ type: "CREATE_DISHES_STARTED" });
+    console.log("sem tu");
     axios
       .post(
         `https://allergyappbackend.azurewebsites.net/api/Dish`,
         {
+          title: dish.dishTitle,
           name: dish.dishName,
-          title: dish.dishTile,
-          description: dish.dishDescription,
+          price: dish.dishPrice,
           picture: dish.dishPicture,
-          restaurant_id: restaurant_id,
+          description: dish.dishDescription,
+          restaurant_id: dish.DishRestaurant_id,
         },
         config
       )
@@ -50,9 +52,9 @@ export const createRestaurantDish = (restaurant_id, dish) => {
         });
       })
       .catch((err) => {
+        console.log(err);
         dispatch({ type: "CREATE_DISHES_ERROR", err });
       });
-    // dispatch({ type: 'CREATE_RESTAURANT', restaurant });
   };
 };
 

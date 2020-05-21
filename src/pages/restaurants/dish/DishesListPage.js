@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 
 import DishList from "../../../components/restaurant/dishes/DishList";
+import CreateDish from "../../../components/restaurant/dishes/CreateDish";
 import {
   fetchRestaurantDishes,
   deleteRestaurantDish,
@@ -12,6 +13,10 @@ import DishView from "./DishView";
 import "./list.scss";
 
 class DishesListPage extends Component {
+  constructor(props) {
+    super(props);
+    this.createModal = React.createRef();
+  }
   componentDidMount() {
     this.props.dispatch(fetchRestaurantDishes(this.state.restaurant_id));
   }
@@ -51,7 +56,7 @@ class DishesListPage extends Component {
     address: "Restaurant address",
   };
   render() {
-    const { dishes, deleteLoading } = this.props;
+    const { dishes, deleteLoading, createLoading } = this.props;
     return (
       <React.Fragment>
         <Container fluid className="list-top">
@@ -76,12 +81,9 @@ class DishesListPage extends Component {
         <Container>
           <Row>
             <Col>
-              <Button
-                color="success"
-                className="pt-2 pr-4 pb-2 pl-4 mt-3 ml-auto mr-auto d-block"
-              >
-                Create dish
-              </Button>
+              <div className="d-block w-100">
+                <CreateDish createLoading={createLoading} />
+              </div>
             </Col>
           </Row>
           {this.state.dish_el === null ? (
@@ -108,6 +110,7 @@ const mapStateToProps = (state) => {
   return {
     dishes: state.dish.dishes,
     deleteLoading: state.dish.deleteLoading,
+    createLoading: state.restaurant.createLoading,
   };
 };
 
