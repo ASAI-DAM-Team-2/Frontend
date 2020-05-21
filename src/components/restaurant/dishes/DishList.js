@@ -24,7 +24,7 @@ class DishList extends Component {
         return acc;
       }
     }, []);
-    return new_dishes.reverse();
+    return new_dishes;
   }
   render() {
     let dishes = this.props.dishes.reverse();
