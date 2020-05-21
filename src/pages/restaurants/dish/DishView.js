@@ -17,7 +17,9 @@ class DishView extends Component {
               &#8592;&nbsp;BACK
             </Button>
             <div className="dish-heading">{this.props.data.name}</div>
-            <div className="dish-price">{this.props.data.price}</div>
+            <div className="dish-price">
+              {this.props.data.price}&nbsp;&euro;
+            </div>
             <Button
               className="dish-delivery"
               color="primary"

@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 
 import DishList from "../../../components/restaurant/dishes/DishList";
-import { fetchRestaurantDishes } from "../../../store/actions/dishesActions";
+import {
+  fetchRestaurantDishes,
+  deleteRestaurantDish,
+} from "../../../store/actions/dishesActions";
 import { connect } from "react-redux";
 
 import DishView from "./DishView";
@@ -11,7 +14,6 @@ import "./list.scss";
 class DishesListPage extends Component {
   componentDidMount() {
     this.props.dispatch(fetchRestaurantDishes(this.state.restaurant_id));
-    console.log(this.props);
   }
   closeDish = () => {
     if (this.state.dishes !== null) {
@@ -49,7 +51,7 @@ class DishesListPage extends Component {
     address: "Restaurant address",
   };
   render() {
-    const { dishes } = this.props;
+    const { dishes, deleteLoading } = this.props;
     return (
       <React.Fragment>
         <Container fluid className="list-top">
@@ -75,7 +77,11 @@ class DishesListPage extends Component {
           {this.state.dish_el === null ? (
             <Row>
               <Col className="text-center mt-4">
-                <DishList dishes={dishes} showDish={this.showDish.bind(this)} />
+                <DishList
+                  dishes={dishes}
+                  deleteLoading={deleteLoading}
+                  showDish={this.showDish.bind(this)}
+                />
               </Col>
             </Row>
           ) : (
@@ -91,6 +97,7 @@ class DishesListPage extends Component {
 const mapStateToProps = (state) => {
   return {
     dishes: state.dish.dishes,
+    deleteLoading: state.dish.deleteLoading,
   };
 };
 
