@@ -62,7 +62,7 @@ const dishReducer = (state = initState, action) => {
     case "UPDATE_DISHES_SUCCESS":
       return {
         ...state,
-        dishes: state.dishes.filter((dishes) => dishes.dish_id !== action.id),
+        dishes: [...state.dishes, action.dishes],
         error: null,
         updateLoading: false,
       };

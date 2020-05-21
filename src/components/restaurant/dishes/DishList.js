@@ -15,10 +15,6 @@ class DishList extends Component {
     this.props.deleteRestaurantDish(id);
     this.setState({ deleteId: id });
   };
-  editRestaurantDish = (e, restaurant_id, dish_id) => {
-    e.preventDefault();
-    console.log(restaurant_id, dish_id);
-  };
   render() {
     const dishes = this.props.dishes;
     const updateLoading = this.props.updateLoading;
