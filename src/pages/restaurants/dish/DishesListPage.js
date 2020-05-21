@@ -37,8 +37,8 @@ class DishesListPage extends Component {
     }
   }
 
-  dishDelivery(heading, id) {
-    console.log("Dish delivery " + heading + " id " + id);
+  dishDelivery(restaurant_id, dish_id) {
+    console.log("Dish delivery " + dish_id + " id " + restaurant_id);
   }
 
   state = {
@@ -75,7 +75,7 @@ class DishesListPage extends Component {
           {this.state.dish_el === null ? (
             <Row>
               <Col className="text-center mt-4">
-                <DishList dishes={dishes} showDish={this.showDish} />
+                <DishList dishes={dishes} showDish={this.showDish.bind(this)} />
               </Col>
             </Row>
           ) : (
@@ -89,7 +89,6 @@ class DishesListPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.dish.dishes);
   return {
     dishes: state.dish.dishes,
   };

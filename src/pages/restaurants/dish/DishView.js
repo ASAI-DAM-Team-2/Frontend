@@ -16,15 +16,15 @@ class DishView extends Component {
             >
               &#8592;&nbsp;BACK
             </Button>
-            <div className="dish-heading">{this.props.data.heading}</div>
+            <div className="dish-heading">{this.props.data.name}</div>
             <div className="dish-price">{this.props.data.price}</div>
             <Button
               className="dish-delivery"
               color="primary"
               onClick={() =>
                 this.props.dishDelivery(
-                  this.props.data.heading,
-                  this.props.data.id
+                  this.props.data.restaurant_id,
+                  this.props.data.dish_id
                 )
               }
             >
@@ -34,10 +34,10 @@ class DishView extends Component {
         </Row>
         <Row>
           <Col>
-            <p>{this.props.data.info}</p>
+            <p>{this.props.data.description}</p>
           </Col>
           <Col className="dish-image">
-            <img src={this.props.data.image} alt="Image" />
+            <img src={this.props.data.picture} alt="Image" />
           </Col>
         </Row>
         <div className="dish-footer" />
