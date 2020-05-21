@@ -52,6 +52,29 @@ const dishReducer = (state = initState, action) => {
         createLoading: false,
       };
 
+    case "UPDATE_DISHES_STARTED":
+      return {
+        ...state,
+        error: null,
+        updateLoading: true,
+      };
+
+    case "UPDATE_DISHES_SUCCESS":
+      return {
+        ...state,
+        dishes: [...state.dishes, action.dishes],
+        error: null,
+        updateLoading: false,
+      };
+
+    case "UPDATE_DISHES_ERROR":
+      return {
+        ...state,
+        error: action.err,
+        fetchLoading: false,
+        updateLoading: false,
+      };
+
     case "DELETE_DISHES_STARTED":
       return {
         ...state,

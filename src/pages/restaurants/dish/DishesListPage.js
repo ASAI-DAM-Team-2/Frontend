@@ -3,6 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 
 import DishList from "../../../components/restaurant/dishes/DishList";
 import CreateDish from "../../../components/restaurant/dishes/CreateDish";
+
 import {
   fetchRestaurantDishes,
   deleteRestaurantDish,
@@ -56,7 +57,7 @@ class DishesListPage extends Component {
     address: "Restaurant address",
   };
   render() {
-    const { dishes, deleteLoading, createLoading } = this.props;
+    const { dishes, deleteLoading, createLoading, updateLoading } = this.props;
     return (
       <React.Fragment>
         <Container fluid className="list-top">
@@ -94,6 +95,7 @@ class DishesListPage extends Component {
                     dishes={dishes}
                     deleteLoading={deleteLoading}
                     showDish={this.showDish.bind(this)}
+                    updateLoading={updateLoading}
                   />
                 </Col>
               </Row>
@@ -113,6 +115,7 @@ const mapStateToProps = (state) => {
     dishes: state.dish.dishes,
     deleteLoading: state.dish.deleteLoading,
     createLoading: state.dish.createLoading,
+    updateLoading: state.dish.updateLoading,
   };
 };
 

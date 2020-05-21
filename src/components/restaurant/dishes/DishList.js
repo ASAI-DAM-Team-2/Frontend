@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Spinner } from "reactstrap";
 import { connect } from "react-redux";
 import { deleteRestaurantDish } from "../../../store/actions/dishesActions";
+import UpdateDish from "../../../components/restaurant/dishes/UpdateDish";
 
 import "./list.scss";
 
@@ -40,9 +41,7 @@ class DishList extends Component {
                 >
                   Show detail
                 </Button>
-                <Button color="info" className="list-button-update">
-                  &#9998;
-                </Button>
+                <UpdateDish dish={dish} />
                 <form
                   className="list-button-delete"
                   onSubmit={(e) =>
