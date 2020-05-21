@@ -79,23 +79,25 @@ class DishesListPage extends Component {
           </Container>
         </Container>
         <Container>
-          <Row>
-            <Col>
-              <div className="d-block w-100">
-                <CreateDish createLoading={createLoading} />
-              </div>
-            </Col>
-          </Row>
           {this.state.dish_el === null ? (
-            <Row>
-              <Col className="text-center mt-4">
-                <DishList
-                  dishes={dishes}
-                  deleteLoading={deleteLoading}
-                  showDish={this.showDish.bind(this)}
-                />
-              </Col>
-            </Row>
+            <React.Fragment>
+              <Row>
+                <Col>
+                  <div className="d-block w-100">
+                    <CreateDish createLoading={createLoading} />
+                  </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="text-center mt-4">
+                  <DishList
+                    dishes={dishes}
+                    deleteLoading={deleteLoading}
+                    showDish={this.showDish.bind(this)}
+                  />
+                </Col>
+              </Row>
+            </React.Fragment>
           ) : (
             <div className="list-deatil">{this.state.dish_el}</div>
           )}
