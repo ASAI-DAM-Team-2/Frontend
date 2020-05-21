@@ -21,6 +21,7 @@ class DishList extends Component {
   };
   render() {
     const dishes = this.props.dishes;
+    const updateLoading = this.props.updateLoading;
 
     return (
       <React.Fragment>
@@ -41,7 +42,7 @@ class DishList extends Component {
                 >
                   Show detail
                 </Button>
-                <UpdateDish dish={dish} />
+                <UpdateDish dish={dish} updateLoading={updateLoading} />
                 <form
                   className="list-button-delete"
                   onSubmit={(e) =>

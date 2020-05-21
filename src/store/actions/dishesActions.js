@@ -62,7 +62,7 @@ export const updateDish = (dish) => {
     dispatch({ type: "UPDATE_DISHES_STARTED" });
     axios
       .put(
-        `https://allergyappbackend.azurewebsites.net/api/Dish/${dish.dish_id}`,
+        `https://allergyappbackend.azurewebsites.net/api/Dish/${dish.dishDish_id}`,
         {
           title: dish.dishTitle,
           name: dish.dishName,

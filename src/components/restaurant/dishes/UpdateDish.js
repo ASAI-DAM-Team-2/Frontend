@@ -22,12 +22,13 @@ class CreateDish extends Component {
     modal: false,
     backdrop: true,
     keyboard: true,
-    dishTitle: "",
-    dishName: "",
-    dishPrice: 0,
-    dishPicture: "",
-    dishDescription: "",
+    dishTitle: this.props.dish.title,
+    dishName: this.props.dish.name,
+    dishPrice: this.props.dish.price,
+    dishPicture: this.props.dish.picture,
+    dishDescription: this.props.dish.description,
     dishRestaurant_id: 107,
+    dishDish_id: this.props.dish.dish_id,
     updateTitle: "Update",
   };
 
@@ -63,14 +64,16 @@ class CreateDish extends Component {
       dishPicture,
       dishDescription,
       dishRestaurant_id,
+      dishDish_id,
     } = this.state;
-    this.props.createDish({
+    this.props.updateDish({
       dishTitle,
       dishName,
       dishPrice,
       dishPicture,
       dishDescription,
       dishRestaurant_id,
+      dishDish_id,
     });
     this.setState({ updateTitle: "Updating..." });
   };
@@ -115,7 +118,7 @@ class CreateDish extends Component {
                   placeholder="Dish title"
                   onChange={this.handleChange}
                   required
-                  value={this.props.dish.title}
+                  value={this.state.dishTitle}
                 />
               </FormGroup>
               <FormGroup>
@@ -126,7 +129,7 @@ class CreateDish extends Component {
                   placeholder="Dish name"
                   onChange={this.handleChange}
                   required
-                  value={this.props.dish.name}
+                  value={this.state.dishName}
                 />
               </FormGroup>
               <FormGroup>
@@ -138,7 +141,7 @@ class CreateDish extends Component {
                   min="0"
                   onChange={this.handleChange}
                   required
-                  value={this.props.dish.price}
+                  value={this.state.dishPrice}
                 />
               </FormGroup>
               <FormGroup>
@@ -148,7 +151,7 @@ class CreateDish extends Component {
                   id="dishPicture"
                   onChange={this.handleChange}
                   required
-                  value={this.props.dish.picture}
+                  value={this.state.dishPicture}
                 />
               </FormGroup>
               <FormGroup>
@@ -158,7 +161,7 @@ class CreateDish extends Component {
                   id="dishDescription"
                   onChange={this.handleChange}
                   required
-                  value={this.props.dish.description}
+                  value={this.state.dishDescription}
                 />
               </FormGroup>
               <div className="action-buttons">
