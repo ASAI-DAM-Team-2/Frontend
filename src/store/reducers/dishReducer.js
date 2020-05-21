@@ -26,7 +26,7 @@ const dishReducer = (state = initState, action) => {
       return {
         ...state,
         fetchLoading: false,
-        error: action.payload.error,
+        error: action.error,
       };
 
     case "CREATE_DISHES_STARTED":
