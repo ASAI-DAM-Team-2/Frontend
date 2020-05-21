@@ -31,7 +31,6 @@ export const createDish = (dish) => {
   return (dispatch, getState) => {
     //make async call to database
     dispatch({ type: "CREATE_DISHES_STARTED" });
-    console.log("sem tu");
     axios
       .post(
         `https://allergyappbackend.azurewebsites.net/api/Dish`,
@@ -41,7 +40,7 @@ export const createDish = (dish) => {
           price: dish.dishPrice,
           picture: dish.dishPicture,
           description: dish.dishDescription,
-          restaurant_id: dish.DishRestaurant_id,
+          restaurant_id: dish.dishRestaurant_id,
         },
         config
       )
@@ -52,7 +51,6 @@ export const createDish = (dish) => {
         });
       })
       .catch((err) => {
-        console.log(err);
         dispatch({ type: "CREATE_DISHES_ERROR", err });
       });
   };

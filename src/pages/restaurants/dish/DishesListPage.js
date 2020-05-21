@@ -110,7 +110,7 @@ const mapStateToProps = (state) => {
   return {
     dishes: state.dish.dishes,
     deleteLoading: state.dish.deleteLoading,
-    createLoading: state.restaurant.createLoading,
+    createLoading: state.dish.createLoading,
   };
 };
 
