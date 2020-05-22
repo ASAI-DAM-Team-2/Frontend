@@ -35,7 +35,7 @@ export const updateUser = (user) => {
       .put(
         `https://allergyappbackend.azurewebsites.net/api/account/userinfo`,
         {
-          Email: user.userTitle,
+          Email: user.userEmail,
           Name: user.userName,
           Surname: user.userSurname,
         },
