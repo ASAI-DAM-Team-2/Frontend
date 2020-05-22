@@ -17,17 +17,30 @@ import {
 } from 'reactstrap';
 import Alert from '../alert/Alert';
 import './LoginModal.scss';
+import { connect } from 'react-redux';
+import { signIn } from '../../store/actions/authActions';
 
 class LoginModal extends Component {
   state = {
     alert_el: null,
+    userEmail: '',
+    userPassword: '',
   };
 
-  handleSubmit(event) {
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onLogin();
+    this.props.signIn({
+      email: this.state.userEmail,
+      password: this.state.userPassword,
+    });
     // here will be ajax api call for login
-  }
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.user !== this.props.user) {
@@ -49,6 +62,7 @@ class LoginModal extends Component {
   }
 
   render() {
+    const { authError } = this.props;
     return (
       <React.Fragment>
         <Modal
@@ -60,7 +74,7 @@ class LoginModal extends Component {
           toggle={this.props.onLoginModalToggle}
         >
           <ModalBody>
-            <Form method='POST' onSubmit={(event) => this.handleSubmit(event)}>
+            <Form method='POST' onSubmit={this.handleSubmit}>
               <Row form>
                 <Col className='ml-auto mr-auto'>
                   <Card className='card-plain ml-auto mr-auto'>
@@ -98,8 +112,9 @@ class LoginModal extends Component {
                           placeholder='Email'
                           type='email'
                           name='email'
-                          id='email'
+                          id='userEmail'
                           placeholder='Enter your email'
+                          onChange={this.handleChange}
                           required
                         />
                       </FormGroup>
@@ -109,13 +124,17 @@ class LoginModal extends Component {
                           placeholder='Password'
                           type='password'
                           name='password'
-                          id='password'
+                          onChange={this.handleChange}
+                          id='userPassword'
                           required
                         />
                       </FormGroup>
                       <Button block className='btn-round mt-4' color='danger'>
                         Login
                       </Button>
+                      <div className='red-text center'>
+                        {authError ? <p>{authError}</p> : null}
+                      </div>
                     </Form>
                     <div className='forgot'>
                       <Button
@@ -138,4 +157,16 @@ class LoginModal extends Component {
   }
 }
 
-export default LoginModal;
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signIn: (credentials) => dispatch(signIn(credentials)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
