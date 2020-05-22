@@ -14,6 +14,7 @@ import {
 } from 'reactstrap';
 import './RestaurantList.scss';
 import { connect } from 'react-redux';
+import EditRestaurant from '../../components/restaurant/EditRestaurant';
 
 import {
   deleteRestaurant,
@@ -35,7 +36,7 @@ class RestaurantList extends Component {
     console.log(id);
   };
   render() {
-    const { restaurants } = this.props;
+    const { restaurants, editLoading } = this.props;
 
     return (
       <ListGroup flush>
@@ -47,18 +48,12 @@ class RestaurantList extends Component {
             >
               <div className='restaurants-description'>{restaurant.name}</div>
               <div className='restaurant-buttons'>
-                <form
-                  className='button-form'
-                  onSubmit={(e) =>
-                    this.editRestaurant(e, restaurant.restaurant_id)
-                  }
-                >
-                  <div className='edit-button'>
-                    <Button className='btn-link' color='primary'>
-                      edit
-                    </Button>
-                  </div>
-                </form>
+                <div className='edit-button'>
+                  <EditRestaurant
+                    restaurant={restaurant}
+                    editLoading={editLoading}
+                  />
+                </div>
                 <form
                   className='button-form'
                   onSubmit={(e) =>

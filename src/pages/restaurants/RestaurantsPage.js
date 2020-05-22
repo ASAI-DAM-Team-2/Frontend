@@ -37,7 +37,12 @@ class RestaurantsPage extends Component {
   }
 
   render() {
-    const { restaurants, createLoading, deleteLoading } = this.props;
+    const {
+      restaurants,
+      createLoading,
+      deleteLoading,
+      editLoading,
+    } = this.props;
     return (
       <div style={{ height: '100vh' }}>
         <div className='restaurants-layout'>
@@ -74,6 +79,7 @@ class RestaurantsPage extends Component {
                 <RestaurantList
                   restaurants={restaurants}
                   deleteLoading={deleteLoading}
+                  editLoading={editLoading}
                 />
               </div>
             </Card>
@@ -90,6 +96,7 @@ const mapStateToProps = (state) => {
     createLoading: state.restaurant.createLoading,
     fetchLoading: state.restaurant.fetchLoading,
     deleteLoading: state.restaurant.deleteLoading,
+    editLoading: state.restaurant.editLoading,
   };
 };
 

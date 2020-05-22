@@ -11,25 +11,25 @@ import {
   Form,
   FormGroup,
 } from 'reactstrap';
-import './CreateRestaurant.scss';
+import './EditRestaurant.scss';
 import { connect } from 'react-redux';
-import { createRestaurant } from '../../store/actions/restaurantActions';
+import { editRestaurant } from '../../store/actions/restaurantActions';
 
-class CreateRestaurant extends Component {
+class EditRestaurant extends Component {
   state = {
     modal: false,
     backdrop: true,
     keyboard: true,
-    restaurantName: '',
-    restaurantAddress: '',
-    companyId: '1',
-    createTitle: 'create',
+    restaurantName: this.props.restaurant.name,
+    restaurantAddress: this.props.restaurant.adress,
+    companyId: this.props.restaurant.company_id,
+    createTitle: 'save',
   };
 
   toggle = () => {
     console.log('modal');
     this.setState({ modal: !this.state.modal });
-    this.setState({ createTitle: 'create' });
+    this.setState({ createTitle: 'save' });
   };
 
   changeBackdrop = (e) => {
@@ -52,20 +52,22 @@ class CreateRestaurant extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
+    const { restaurant_id } = this.props.restaurant;
     const { restaurantName, restaurantAddress, companyId } = this.state;
     // console.log(this.props);
-    this.props.createRestaurant({
+    this.props.editRestaurant({
       restaurantName,
       restaurantAddress,
       companyId,
+      restaurant_id,
     });
-    this.setState({ createTitle: 'creating...' });
+    this.setState({ createTitle: 'saving...' });
   };
 
   componentDidUpdate(prevProps) {
     if (
-      prevProps.createLoading !== this.props.createLoading &&
-      !this.props.createLoading &&
+      prevProps.editLoading !== this.props.editLoading &&
+      !this.props.editLoading &&
       this.state.modal
     ) {
       this.toggle();
@@ -75,16 +77,16 @@ class CreateRestaurant extends Component {
   }
 
   render() {
+    const { name, adress, company_id } = this.props.restaurant;
     return (
       <div className='create-restaurant'>
         <Form inline onSubmit={(e) => e.preventDefault()}>
           <Button
-            className='add-button'
-            color='success'
+            className='btn-link'
+            color='primary'
             onClick={this.toggle.bind(this)}
           >
-            <i className='fa fa-plus'></i>
-            <span>New</span>
+            edit
           </Button>
         </Form>
         <Modal
@@ -106,6 +108,7 @@ class CreateRestaurant extends Component {
                   id='restaurantName'
                   placeholder='Restaurant name'
                   onChange={this.handleChange}
+                  defaultValue={name}
                 />
               </FormGroup>
               <FormGroup>
@@ -115,6 +118,7 @@ class CreateRestaurant extends Component {
                   id='restaurantAddress'
                   placeholder='Restaurant address'
                   onChange={this.handleChange}
+                  defaultValue={adress}
                 />
               </FormGroup>
               <FormGroup>
@@ -124,6 +128,7 @@ class CreateRestaurant extends Component {
                   name='select'
                   id='companyId'
                   onChange={this.handleChange}
+                  defaultValue={company_id}
                 >
                   <option value='1'>Coca cola</option>
                   <option value='2'>Pepsi</option>
@@ -147,8 +152,8 @@ class CreateRestaurant extends Component {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    createRestaurant: (restaurant) => dispatch(createRestaurant(restaurant)),
+    editRestaurant: (restaurant) => dispatch(editRestaurant(restaurant)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(CreateRestaurant);
+export default connect(null, mapDispatchToProps)(EditRestaurant);
