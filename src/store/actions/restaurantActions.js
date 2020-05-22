@@ -73,3 +73,31 @@ export const deleteRestaurant = (id) => {
     // dispatch({ type: 'CREATE_RESTAURANT', restaurant });
   };
 };
+
+export const editRestaurant = (restaurant) => {
+  const restaurantId = restaurant.restaurant_id;
+  return (dispatch, getState) => {
+    dispatch({ type: 'EDIT_RESTAURANT_STARTED' });
+    return axios
+      .put(
+        `https://allergyappbackend.azurewebsites.net/api/Restaurant/${restaurantId}`,
+        {
+          name: restaurant.restaurantName,
+          adress: restaurant.restaurantAddress,
+          plan_id: 1,
+          company_id: restaurant.companyId,
+        },
+        config
+      )
+      .then((res) => {
+        dispatch({
+          type: 'EDIT_RESTAURANT_SUCCESS',
+          restaurant: res.data,
+        });
+      })
+
+      .catch((err) => {
+        dispatch({ type: 'EDIT_RESTAURANT_ERROR', err });
+      });
+  };
+};
