@@ -82,11 +82,7 @@ class UserPage extends Component {
                   <ListGroupItem className="user-item">
                     <div className="user-description">{user.Email}</div>
                     <div className="user-buttons">
-                      <UpdateUser
-                        userData={user}
-                        email={user.Email}
-                        activeInput="email"
-                      />
+                      <UpdateUser userData={user} activeInput="email" />
                     </div>
                   </ListGroupItem>
                   <ListGroupItem className="user-item">

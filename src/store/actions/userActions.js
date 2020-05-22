@@ -27,17 +27,17 @@ export const fetchUser = () => {
   };
 };
 
-export const updateUser = (dish) => {
+export const updateUser = (user) => {
   return (dispatch, getState) => {
     //make async call to database
     dispatch({ type: "UPDATE_USER_STARTED" });
     axios
       .put(
-        `https://allergyappbackend.azurewebsites.net/api/Dish/${dish.dishDish_id}`,
+        `https://allergyappbackend.azurewebsites.net/api/account/userinfo`,
         {
-          Email: dish.dishTitle,
-          Name: dish.dishName,
-          Surname: dish.dishPrice,
+          Email: user.userTitle,
+          Name: user.userName,
+          Surname: user.userSurname,
         },
         config
       )
