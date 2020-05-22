@@ -35,12 +35,9 @@ export const updateUser = (dish) => {
       .put(
         `https://allergyappbackend.azurewebsites.net/api/Dish/${dish.dishDish_id}`,
         {
-          title: dish.dishTitle,
-          name: dish.dishName,
-          price: dish.dishPrice,
-          picture: dish.dishPicture,
-          description: dish.dishDescription,
-          restaurant_id: dish.dishRestaurant_id,
+          Email: dish.dishTitle,
+          Name: dish.dishName,
+          Surname: dish.dishPrice,
         },
         config
       )
