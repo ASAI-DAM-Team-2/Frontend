@@ -11,6 +11,9 @@ import {
   FormGroup,
 } from 'reactstrap';
 import Alert from '../../components/alert/Alert';
+import { connect } from 'react-redux';
+
+import { signUp } from '../../store/actions/authActions';
 
 class RegisterPage extends React.Component {
   state = {
@@ -42,7 +45,13 @@ class RegisterPage extends React.Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    this.props.signUp({
+      email: this.state.email,
+      password: this.state.password,
+      confirmPassword: this.state.confirmPassword,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+    });
   };
 
   render() {
@@ -168,4 +177,16 @@ class RegisterPage extends React.Component {
   }
 }
 
-export default RegisterPage;
+const mapStateToProps = (state) => {
+  return {
+    regError: state.auth.regError,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (credentials) => dispatch(signUp(credentials)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
