@@ -74,82 +74,80 @@ class LoginModal extends Component {
           toggle={this.props.onLoginModalToggle}
         >
           <ModalBody>
-            <Form method='POST' onSubmit={this.handleSubmit}>
-              <Row form>
-                <Col className='ml-auto mr-auto'>
-                  <Card className='card-plain ml-auto mr-auto'>
-                    <h3 className='title mx-auto'>Welcome</h3>
-                    <div className='social-line text-center'>
-                      <Button
-                        className='btn-neutral btn-just-icon mr-1'
-                        color='facebook'
-                        href='#pablo'
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className='fa fa-facebook-square' />
-                      </Button>
-                      <Button
-                        className='btn-neutral btn-just-icon mr-1'
-                        color='google'
-                        href='#pablo'
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className='fa fa-google-plus' />
-                      </Button>
-                      <Button
-                        className='btn-neutral btn-just-icon'
-                        color='twitter'
-                        href='#pablo'
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className='fa fa-twitter' />
-                      </Button>
+            <Row form>
+              <Col className='ml-auto mr-auto'>
+                <Card className='card-plain ml-auto mr-auto'>
+                  <h3 className='title mx-auto'>Welcome</h3>
+                  <div className='social-line text-center'>
+                    <Button
+                      className='btn-neutral btn-just-icon mr-1'
+                      color='facebook'
+                      href='#pablo'
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <i className='fa fa-facebook-square' />
+                    </Button>
+                    <Button
+                      className='btn-neutral btn-just-icon mr-1'
+                      color='google'
+                      href='#pablo'
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <i className='fa fa-google-plus' />
+                    </Button>
+                    <Button
+                      className='btn-neutral btn-just-icon'
+                      color='twitter'
+                      href='#pablo'
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <i className='fa fa-twitter' />
+                    </Button>
+                  </div>
+                  <Form className='login-form' onSubmit={this.handleSubmit}>
+                    <FormGroup className='mt-2'>
+                      <label htmlFor='userName'>Email</label>
+                      <Input
+                        placeholder='Email'
+                        type='email'
+                        name='email'
+                        id='userEmail'
+                        placeholder='Enter your email'
+                        onChange={this.handleChange}
+                        required
+                      />
+                    </FormGroup>
+                    <FormGroup className='mt-4'>
+                      <label htmlFor='password'>Password</label>
+                      <Input
+                        placeholder='Password'
+                        type='password'
+                        name='password'
+                        onChange={this.handleChange}
+                        id='userPassword'
+                        required
+                      />
+                    </FormGroup>
+                    <Button block className='btn-round mt-4' color='danger'>
+                      Login
+                    </Button>
+                    <div className='red-text center'>
+                      {authError ? <p>{authError}</p> : null}
                     </div>
-                    <Form className='register-form'>
-                      <FormGroup className='mt-2'>
-                        <label htmlFor='userName'>Email</label>
-                        <Input
-                          placeholder='Email'
-                          type='email'
-                          name='email'
-                          id='userEmail'
-                          placeholder='Enter your email'
-                          onChange={this.handleChange}
-                          required
-                        />
-                      </FormGroup>
-                      <FormGroup className='mt-4'>
-                        <label htmlFor='password'>Password</label>
-                        <Input
-                          placeholder='Password'
-                          type='password'
-                          name='password'
-                          onChange={this.handleChange}
-                          id='userPassword'
-                          required
-                        />
-                      </FormGroup>
-                      <Button block className='btn-round mt-4' color='danger'>
-                        Login
-                      </Button>
-                      <div className='red-text center'>
-                        {authError ? <p>{authError}</p> : null}
-                      </div>
-                    </Form>
-                    <div className='forgot'>
-                      <Button
-                        className='btn-link'
-                        color='danger'
-                        href='#pablo'
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        Forgot password?
-                      </Button>
-                    </div>
-                  </Card>
-                </Col>
-              </Row>
-            </Form>
+                  </Form>
+                  <div className='forgot'>
+                    <Button
+                      className='btn-link'
+                      color='danger'
+                      href='#pablo'
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      Forgot password?
+                    </Button>
+                  </div>
+                </Card>
+              </Col>
+            </Row>
           </ModalBody>
         </Modal>
       </React.Fragment>
