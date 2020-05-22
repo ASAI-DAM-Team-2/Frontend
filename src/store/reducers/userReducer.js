@@ -2,7 +2,7 @@ const initState = {
   createLoading: false,
   fetchLoading: false,
   deleteLoading: false,
-  user: null,
+  user: {},
   error: null,
 };
 const userReducer = (state = initState, action) => {
