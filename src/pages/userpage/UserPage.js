@@ -19,6 +19,8 @@ import MSelect from "../../components/multiselect/multiselect";
 import { fetchUser } from "../../store/actions/userActions";
 import { connect } from "react-redux";
 
+import UpdateUser from "../../components/user/UpdateUser.js";
+
 const drop_styles = {
   border: "1px dashed black",
   width: "100%",
@@ -42,8 +44,7 @@ class UserPage extends Component {
     ],
   };
   render() {
-    const { user } = this.props;
-    console.log(user);
+    const { user, updateLoading } = this.props;
     return (
       <React.Fragment>
         <div className="user-layout">
@@ -81,25 +82,27 @@ class UserPage extends Component {
                   <ListGroupItem className="user-item">
                     <div className="user-description">{user.Email}</div>
                     <div className="user-buttons">
-                      <Button className="btn-link" color="primary">
-                        edit
-                      </Button>
+                      <UpdateUser
+                        userData={user}
+                        email={user.Email}
+                        activeInput="email"
+                      />
                     </div>
                   </ListGroupItem>
                   <ListGroupItem className="user-item">
                     <div className="user-description">{user.Name}</div>
                     <div className="user-buttons">
-                      <Button className="btn-link" color="primary">
-                        edit
-                      </Button>
+                      <UpdateUser userData={user} activeInput="name" />
                     </div>
                   </ListGroupItem>
                   <ListGroupItem className="user-item">
                     <div className="user-description">{user.Surname}</div>
                     <div className="user-buttons">
-                      <Button className="btn-link" color="primary">
-                        edit
-                      </Button>
+                      <UpdateUser
+                        userData={user}
+                        activeInput="surname"
+                        updateLoading={updateLoading}
+                      />
                     </div>
                   </ListGroupItem>
                 </ListGroup>
@@ -115,6 +118,7 @@ class UserPage extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user.user,
+    updateLoading: state.user.updateLoading,
   };
 };
 
