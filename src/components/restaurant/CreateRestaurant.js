@@ -80,7 +80,7 @@ class CreateRestaurant extends Component {
         <Form inline onSubmit={(e) => e.preventDefault()}>
           <Button
             className='add-button'
-            color='danger'
+            color='success'
             onClick={this.toggle.bind(this)}
           >
             <i className='fa fa-plus'></i>
@@ -133,7 +133,7 @@ class CreateRestaurant extends Component {
                 </Input>
               </FormGroup>
               <div className='action-buttons'>
-                <Button color='danger'>{this.state.createTitle}</Button>
+                <Button color='success'>{this.state.createTitle}</Button>
                 <Button color='secondary' onClick={this.toggle.bind(this)}>
                   Cancel
                 </Button>
