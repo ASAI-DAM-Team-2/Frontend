@@ -18,7 +18,7 @@ export const signUp = (credentials) => {
 
     axios
       .post(
-        `http://allergyappbackend.azurewebsites.net/api/Account/Register`,
+        `https://allergyappbackend.azurewebsites.net/api/Account/Register`,
         requestBody
       )
       // axios
