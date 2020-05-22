@@ -106,6 +106,7 @@ class CreateRestaurant extends Component {
                   id='restaurantName'
                   placeholder='Restaurant name'
                   onChange={this.handleChange}
+                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -115,6 +116,7 @@ class CreateRestaurant extends Component {
                   id='restaurantAddress'
                   placeholder='Restaurant address'
                   onChange={this.handleChange}
+                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -124,6 +126,7 @@ class CreateRestaurant extends Component {
                   name='select'
                   id='companyId'
                   onChange={this.handleChange}
+                  required
                 >
                   <option value='1'>Coca cola</option>
                   <option value='2'>Pepsi</option>
