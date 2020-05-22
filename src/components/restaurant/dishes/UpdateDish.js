@@ -27,7 +27,7 @@ class CreateDish extends Component {
     dishPrice: this.props.dish.price,
     dishPicture: this.props.dish.picture,
     dishDescription: this.props.dish.description,
-    dishRestaurant_id: 120,
+    dishRestaurant_id: 132,
     dishDish_id: this.props.dish.dish_id,
     updateTitle: "Update",
   };

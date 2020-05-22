@@ -25,7 +25,7 @@ class CreateDish extends Component {
     dishPrice: 0,
     dishPicture: "",
     dishDescription: "",
-    dishRestaurant_id: 120,
+    dishRestaurant_id: 132,
     createTitle: "Create",
   };
 
