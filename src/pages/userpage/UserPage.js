@@ -16,6 +16,9 @@ import "./UserPage.scss";
 import Alert from "../../components/alert/Alert";
 import MSelect from "../../components/multiselect/multiselect";
 
+import { fetchUser } from "../../store/actions/userActions";
+import { connect } from "react-redux";
+
 const drop_styles = {
   border: "1px dashed black",
   width: "100%",
@@ -24,6 +27,10 @@ const drop_styles = {
 };
 
 class UserPage extends Component {
+  componentDidMount() {
+    this.props.dispatch(fetchUser());
+    console.log(this.props);
+  }
   state = {
     alert_el: null,
     options: [
@@ -36,6 +43,7 @@ class UserPage extends Component {
     ],
   };
   render() {
+    const { user } = this.props;
     return (
       <React.Fragment>
         <div className="user-layout">
@@ -69,7 +77,7 @@ class UserPage extends Component {
                     />
                   </ListGroupItem>
                   <ListGroupItem className="user-item">
-                    <div className="user-description">User name</div>
+                    <div className="user-description">Ahoj</div>
                     <div className="user-buttons">
                       <Button className="btn-link" color="primary">
                         edit
@@ -110,4 +118,10 @@ class UserPage extends Component {
   }
 }
 
-export default UserPage;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user.user,
+  };
+};
+
+export default connect(mapStateToProps)(UserPage);
