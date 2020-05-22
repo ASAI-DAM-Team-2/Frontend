@@ -9,7 +9,7 @@ const config = {
 
 export const fetchUser = () => {
   return (dispatch, getState) => {
-    dispatch({ type: "FETCH_DISHES_STARTED" });
+    dispatch({ type: "FETCH_USER_STARTED" });
     axios
       .get(
         `https://allergyappbackend.azurewebsites.net/api/account/userinfo`,
@@ -17,12 +17,12 @@ export const fetchUser = () => {
       )
       .then((res) => {
         dispatch({
-          type: "FETCH_DISHES_SUCCESS",
+          type: "FETCH_USER_SUCCESS",
           user: res.data,
         });
       })
       .catch(function (err) {
-        dispatch({ type: "FETCH_DISHES_ERROR", err });
+        dispatch({ type: "FETCH_USER_ERROR", err });
       });
   };
 };
@@ -30,7 +30,7 @@ export const fetchUser = () => {
 export const updateUser = (dish) => {
   return (dispatch, getState) => {
     //make async call to database
-    dispatch({ type: "UPDATE_DISHES_STARTED" });
+    dispatch({ type: "UPDATE_USER_STARTED" });
     axios
       .put(
         `https://allergyappbackend.azurewebsites.net/api/Dish/${dish.dishDish_id}`,
@@ -46,12 +46,12 @@ export const updateUser = (dish) => {
       )
       .then((res) => {
         dispatch({
-          type: "UPDATE_DISHES_SUCCESS",
+          type: "UPDATE_USER_SUCCESS",
           dishes: res.data,
         });
       })
       .catch((err) => {
-        dispatch({ type: "UPDATE_DISHES_ERROR", err });
+        dispatch({ type: "UPDATE_USER_ERROR", err });
       });
   };
 };
