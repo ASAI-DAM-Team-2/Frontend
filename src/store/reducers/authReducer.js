@@ -2,8 +2,9 @@ const initState = {
   authLoading: false,
   authToken: null,
   authError: null,
-  registerLoading: null,
+  registerLoading: false,
   regError: null,
+  regSuccess: null,
 };
 const authReducer = (state = initState, action) => {
   switch (action.type) {
@@ -18,6 +19,7 @@ const authReducer = (state = initState, action) => {
       return {
         ...state,
         regError: null,
+        regSuccess: true,
         registerLoading: false,
       };
     case 'REGISTER_USER_ERROR':
@@ -25,6 +27,7 @@ const authReducer = (state = initState, action) => {
       return {
         ...state,
         regError: 'Register failed',
+        regSuccess: null,
         registerLoading: false,
       };
     case 'AUTH_USER_STARTED':
@@ -35,6 +38,7 @@ const authReducer = (state = initState, action) => {
       console.log('auth user success');
       return {
         ...state,
+        authToken: action.credentials.access_token,
         authError: null,
       };
 

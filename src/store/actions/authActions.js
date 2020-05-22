@@ -21,15 +21,10 @@ export const signUp = (credentials) => {
         `https://allergyappbackend.azurewebsites.net/api/Account/Register`,
         requestBody
       )
-      // axios
-      //   .get(
-      //     `https://allergyappbackend.azurewebsites.net/api/account/userinfo`,
-      //     config
-      //   )
+
       .then((res) => {
         dispatch({
           type: 'REGISTER_USER_SUCCESS',
-          restaurants: res.data,
         });
       })
       .catch(function (err) {
@@ -56,7 +51,7 @@ export const signIn = (credentials) => {
       .then((res) => {
         dispatch({
           type: 'AUTH_USER_SUCCESS',
-          restaurants: res.data,
+          credentials: res.data,
         });
       })
       .catch(function (err) {

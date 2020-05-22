@@ -104,6 +104,7 @@ const mapStateToProps = (state) => {
     fetchLoading: state.restaurant.fetchLoading,
     deleteLoading: state.restaurant.deleteLoading,
     editLoading: state.restaurant.editLoading,
+    authToken: state.auth.authToken,
   };
 };
 

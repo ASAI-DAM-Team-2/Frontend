@@ -55,6 +55,7 @@ class RegisterPage extends React.Component {
   };
 
   render() {
+    const { regSuccess, regError } = this.props;
     return (
       <React.Fragment>
         <div
@@ -149,6 +150,10 @@ class RegisterPage extends React.Component {
                       <Button block className='btn-round' color='danger'>
                         Register
                       </Button>
+                      <div className='red-text center'>
+                        {regError ? <p>{regError}</p> : null}
+                        {regSuccess ? <p>User registered</p> : null}
+                      </div>
                     </div>
                   </Form>
                   <div className='forgot'>
@@ -180,6 +185,8 @@ class RegisterPage extends React.Component {
 const mapStateToProps = (state) => {
   return {
     regError: state.auth.regError,
+    regSuccess: state.auth.regSuccess,
+    registerLoading: state.auth.registerLoading,
   };
 };
 

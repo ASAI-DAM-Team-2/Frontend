@@ -43,6 +43,15 @@ class LoginModal extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
+    if (
+      prevProps.registerLoading !== this.props.registerLoading &&
+      !this.props.registerLoading &&
+      !this.props.show &&
+      !this.props.regError
+    ) {
+      this.props.onLoginModalToggle();
+    }
+
     if (prevProps.user !== this.props.user) {
       if (this.props.user) {
         this.setState({
@@ -158,6 +167,8 @@ class LoginModal extends Component {
 const mapStateToProps = (state) => {
   return {
     authError: state.auth.authError,
+    regError: state.auth.regError,
+    registerLoading: state.auth.registerLoading,
   };
 };
 
