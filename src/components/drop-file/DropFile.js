@@ -14,7 +14,7 @@ function DropFile(props) {
             onDragLeave={(event) => console.log("onDragLeave", event)}
             onDrop={(files, event) => console.log("onDrop!", files, event)}
           >
-            <h4> Drop new image file here!</h4>
+            <h4> Drop new image file here! (TODO)</h4>
           </FileDrop>
         </div>
       </div>

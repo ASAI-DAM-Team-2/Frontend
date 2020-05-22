@@ -29,7 +29,6 @@ const drop_styles = {
 class UserPage extends Component {
   componentDidMount() {
     this.props.dispatch(fetchUser());
-    console.log(this.props);
   }
   state = {
     alert_el: null,
@@ -44,6 +43,7 @@ class UserPage extends Component {
   };
   render() {
     const { user } = this.props;
+    console.log(user);
     return (
       <React.Fragment>
         <div className="user-layout">
@@ -70,14 +70,16 @@ class UserPage extends Component {
               </div>
               <div className="user-list">
                 <ListGroup flush>
-                  <ListGroupItem>
-                    <MSelect
-                      options={this.state.options}
-                      heading="Choose your allergens"
-                    />
-                  </ListGroupItem>
+                  {
+                    // <ListGroupItem>
+                    //   <MSelect
+                    //     options={this.state.options}
+                    //     heading="Choose your allergens"
+                    //   />
+                    // </ListGroupItem>
+                  }
                   <ListGroupItem className="user-item">
-                    <div className="user-description">Ahoj</div>
+                    <div className="user-description">{user.Email}</div>
                     <div className="user-buttons">
                       <Button className="btn-link" color="primary">
                         edit
@@ -85,7 +87,7 @@ class UserPage extends Component {
                     </div>
                   </ListGroupItem>
                   <ListGroupItem className="user-item">
-                    <div className="user-description">Current password</div>
+                    <div className="user-description">{user.Name}</div>
                     <div className="user-buttons">
                       <Button className="btn-link" color="primary">
                         edit
@@ -93,15 +95,7 @@ class UserPage extends Component {
                     </div>
                   </ListGroupItem>
                   <ListGroupItem className="user-item">
-                    <div className="user-description">New password</div>
-                    <div className="user-buttons">
-                      <Button className="btn-link" color="primary">
-                        edit
-                      </Button>
-                    </div>
-                  </ListGroupItem>
-                  <ListGroupItem className="user-item">
-                    <div className="user-description">Repeat new password</div>
+                    <div className="user-description">{user.Surname}</div>
                     <div className="user-buttons">
                       <Button className="btn-link" color="primary">
                         edit
