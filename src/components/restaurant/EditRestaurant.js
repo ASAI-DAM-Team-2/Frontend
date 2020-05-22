@@ -94,10 +94,10 @@ class EditRestaurant extends Component {
           toggle={this.toggle.bind(this)}
           backdrop={this.state.backdrop}
           keyboard={this.state.keyboard}
-          className='add-modal'
+          className='edit-modal'
         >
           <ModalHeader toggle={this.toggle.bind(this)}>
-            Create Restaurant
+            Edit Restaurant
           </ModalHeader>
           <ModalBody>
             <Form onSubmit={this.handleSubmit}>
@@ -109,6 +109,7 @@ class EditRestaurant extends Component {
                   placeholder='Restaurant name'
                   onChange={this.handleChange}
                   defaultValue={name}
+                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -119,6 +120,7 @@ class EditRestaurant extends Component {
                   placeholder='Restaurant address'
                   onChange={this.handleChange}
                   defaultValue={adress}
+                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -129,6 +131,7 @@ class EditRestaurant extends Component {
                   id='companyId'
                   onChange={this.handleChange}
                   defaultValue={company_id}
+                  required
                 >
                   <option value='1'>Coca cola</option>
                   <option value='2'>Pepsi</option>

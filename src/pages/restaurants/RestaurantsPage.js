@@ -8,6 +8,7 @@ import {
   Input,
   Button,
   Card,
+  Spinner,
   ListGroup,
   ListGroupItem,
 } from 'reactstrap';
@@ -76,11 +77,17 @@ class RestaurantsPage extends Component {
                 </FormGroup>
               </div>
               <div className='restaurants-list'>
-                <RestaurantList
-                  restaurants={restaurants}
-                  deleteLoading={deleteLoading}
-                  editLoading={editLoading}
-                />
+                {this.props.fetchLoading ? (
+                  <div className='spinner-loading'>
+                    <Spinner size='lg' color='primary' />
+                  </div>
+                ) : (
+                  <RestaurantList
+                    restaurants={restaurants}
+                    deleteLoading={deleteLoading}
+                    editLoading={editLoading}
+                  />
+                )}
               </div>
             </Card>
           </Container>
