@@ -68,11 +68,27 @@ class UpdateUser extends Component {
     ) {
       this.toggle();
     }
+    if (
+      typeof this.state.userEmail === "undefined" &&
+      typeof this.props.userData.Email !== "undefined"
+    ) {
+      this.setState({ userEmail: this.props.userData.Email });
+    }
+    if (
+      typeof this.state.userName === "undefined" &&
+      typeof this.props.userData.Name !== "undefined"
+    ) {
+      this.setState({ userName: this.props.userData.Name });
+    }
+    if (
+      typeof this.state.userSurname === "undefined" &&
+      typeof this.props.userData.Surname !== "undefined"
+    ) {
+      this.setState({ userSurname: this.props.userData.Surname });
+    }
   }
 
   render() {
-    console.log(this.props.userData);
-    console.log(this.state);
     return (
       <div className="update-user">
         <Form inline onSubmit={(e) => e.preventDefault()}>
