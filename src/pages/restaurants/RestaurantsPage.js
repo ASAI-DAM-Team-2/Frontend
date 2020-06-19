@@ -30,7 +30,11 @@ class RestaurantsPage extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchRestaurants());
+    if (!this.props.authToken) {
+      this.props.history.push('/');
+    } else {
+      this.props.dispatch(fetchRestaurants());
+    }
   }
 
   componentDidUpdate(prevProps) {
