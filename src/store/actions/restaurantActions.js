@@ -12,10 +12,17 @@ const config = {
 
 export const fetchRestaurants = () => {
   return (dispatch, getState) => {
+    const { authToken } = getState().auth;
+    const header = {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    };
+
     dispatch({ type: 'FETCH_RESTAURANT_STARTED' });
 
     axios
-      .get(`https://allergyappbackend.azurewebsites.net/api/Restaurant`, config)
+      .get(`https://allergyappbackend.azurewebsites.net/api/Restaurant`, header)
       .then((res) => {
         dispatch({
           type: 'FETCH_RESTAURANT_SUCCESS',
@@ -30,6 +37,12 @@ export const fetchRestaurants = () => {
 
 export const createRestaurant = (restaurant) => {
   return (dispatch, getState) => {
+    const { authToken } = getState().auth;
+    const header = {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    };
     //make async call to database
     dispatch({ type: 'CREATE_RESTAURANT_STARTED' });
     axios
@@ -40,7 +53,7 @@ export const createRestaurant = (restaurant) => {
           adress: restaurant.restaurantAddress,
           company_id: restaurant.companyId,
         },
-        config
+        header
       )
       .then((res) => {
         dispatch({
@@ -57,12 +70,18 @@ export const createRestaurant = (restaurant) => {
 
 export const deleteRestaurant = (id) => {
   return (dispatch, getState) => {
+    const { authToken } = getState().auth;
+    const header = {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    };
     //make async call to database
     dispatch({ type: 'DELETE_RESTAURANT_STARTED' });
     axios
       .delete(
         `https://allergyappbackend.azurewebsites.net/api/Restaurant/${id}`,
-        config
+        header
       )
       .then((res) => {
         dispatch({
@@ -80,6 +99,12 @@ export const deleteRestaurant = (id) => {
 export const editRestaurant = (restaurant) => {
   const restaurantId = restaurant.restaurant_id;
   return (dispatch, getState) => {
+    const { authToken } = getState().auth;
+    const header = {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    };
     dispatch({ type: 'EDIT_RESTAURANT_STARTED' });
     return axios
       .put(
@@ -90,7 +115,7 @@ export const editRestaurant = (restaurant) => {
           plan_id: 1,
           company_id: restaurant.companyId,
         },
-        config
+        header
       )
       .then((res) => {
         dispatch({
@@ -102,5 +127,10 @@ export const editRestaurant = (restaurant) => {
       .catch((err) => {
         dispatch({ type: 'EDIT_RESTAURANT_ERROR', err });
       });
+  };
+};
+export const removeRestaurants = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: 'REMOVE_RESTAURANTS' });
   };
 };

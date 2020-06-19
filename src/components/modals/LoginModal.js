@@ -19,6 +19,7 @@ import Alert from '../alert/Alert';
 import './LoginModal.scss';
 import { connect } from 'react-redux';
 import { signIn } from '../../store/actions/authActions';
+import { withRouter } from 'react-router-dom';
 
 class LoginModal extends Component {
   state = {
@@ -33,7 +34,7 @@ class LoginModal extends Component {
     });
   };
 
-  handleSubmit = (event) => {
+  loginUser = (event) => {
     event.preventDefault();
     this.props.signIn({
       email: this.state.userEmail,
@@ -43,30 +44,17 @@ class LoginModal extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (
-      prevProps.registerLoading !== this.props.registerLoading &&
-      !this.props.registerLoading &&
-      !this.props.show &&
-      !this.props.regError
-    ) {
+    // if (
+    //   prevProps.registerLoading !== this.props.registerLoading &&
+    //   !this.props.registerLoading &&
+    //   !this.props.show &&
+    //   !this.props.regError
+    // ) {
+    //   this.props.onLoginModalToggle();
+    // }
+    if (prevProps.authToken !== this.props.authToken && this.props.authToken) {
       this.props.onLoginModalToggle();
-    }
-
-    if (prevProps.user !== this.props.user) {
-      if (this.props.user) {
-        this.setState({
-          alert_el: <Alert message='Logged successfully' type='success' />,
-        });
-        setTimeout(() => {
-          this.props.onLoginModalToggle();
-        }, 1000);
-      } else {
-        this.setState({
-          alert_el: (
-            <Alert message='Incorrect user name or password!' type='danger' />
-          ),
-        });
-      }
+      this.props.history.push('restaurants');
     }
   }
 
@@ -113,7 +101,7 @@ class LoginModal extends Component {
                       <i className='fa fa-twitter' />
                     </Button>
                   </div>
-                  <Form className='login-form' onSubmit={this.handleSubmit}>
+                  <Form className='login-form' onSubmit={this.loginUser}>
                     <FormGroup className='mt-2'>
                       <label htmlFor='userName'>Email</label>
                       <Input
@@ -169,6 +157,7 @@ const mapStateToProps = (state) => {
     authError: state.auth.authError,
     regError: state.auth.regError,
     registerLoading: state.auth.registerLoading,
+    authToken: state.auth.authToken,
   };
 };
 
@@ -178,4 +167,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(LoginModal));

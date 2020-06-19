@@ -7,14 +7,14 @@ const initState = {
 };
 const dishReducer = (state = initState, action) => {
   switch (action.type) {
-    case "FETCH_DISHES_STARTED":
+    case 'FETCH_DISHES_STARTED':
       return {
         ...state,
         fetchLoading: true,
         error: null,
       };
 
-    case "FETCH_DISHES_SUCCESS":
+    case 'FETCH_DISHES_SUCCESS':
       return {
         ...state,
         error: null,
@@ -22,21 +22,21 @@ const dishReducer = (state = initState, action) => {
         dishes: action.dishes,
       };
 
-    case "FETCH_DISHES_ERROR":
+    case 'FETCH_DISHES_ERROR':
       return {
         ...state,
         fetchLoading: false,
         error: action.error,
       };
 
-    case "CREATE_DISHES_STARTED":
+    case 'CREATE_DISHES_STARTED':
       return {
         ...state,
         error: null,
         createLoading: true,
       };
 
-    case "CREATE_DISHES_SUCCESS":
+    case 'CREATE_DISHES_SUCCESS':
       return {
         ...state,
         dishes: [...state.dishes, action.dishes],
@@ -44,7 +44,7 @@ const dishReducer = (state = initState, action) => {
         createLoading: false,
       };
 
-    case "CREATE_DISHES_ERROR":
+    case 'CREATE_DISHES_ERROR':
       return {
         ...state,
         error: action.err,
@@ -52,14 +52,14 @@ const dishReducer = (state = initState, action) => {
         createLoading: false,
       };
 
-    case "UPDATE_DISHES_STARTED":
+    case 'UPDATE_DISHES_STARTED':
       return {
         ...state,
         error: null,
         updateLoading: true,
       };
 
-    case "UPDATE_DISHES_SUCCESS":
+    case 'UPDATE_DISHES_SUCCESS':
       return {
         ...state,
         dishes: [...state.dishes, action.dishes],
@@ -67,7 +67,7 @@ const dishReducer = (state = initState, action) => {
         updateLoading: false,
       };
 
-    case "UPDATE_DISHES_ERROR":
+    case 'UPDATE_DISHES_ERROR':
       return {
         ...state,
         error: action.err,
@@ -75,23 +75,28 @@ const dishReducer = (state = initState, action) => {
         updateLoading: false,
       };
 
-    case "DELETE_DISHES_STARTED":
+    case 'DELETE_DISHES_STARTED':
       return {
         ...state,
         deleteLoading: true,
       };
 
-    case "DELETE_DISHES_SUCCESS":
+    case 'DELETE_DISHES_SUCCESS':
       return {
         ...state,
         deleteLoading: false,
         dishes: state.dishes.filter((dishes) => dishes.dish_id !== action.id),
       };
-    case "DELETE_DISHES_ERROR":
+    case 'DELETE_DISHES_ERROR':
       return {
         ...state,
         deleteLoading: false,
         error: action.err,
+      };
+    case 'REMOVE_DISHES':
+      return {
+        ...state,
+        dishes: [],
       };
 
     default:

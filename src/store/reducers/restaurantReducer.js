@@ -120,6 +120,11 @@ const restaurantReducer = (state = initState, action) => {
         error: action.err,
         editLoading: false,
       };
+    case 'REMOVE_RESTAURANTS':
+      return {
+        ...state,
+        restaurants: [],
+      };
 
     default:
       return state;

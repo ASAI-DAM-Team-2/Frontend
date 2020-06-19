@@ -59,3 +59,9 @@ export const signIn = (credentials) => {
       });
   };
 };
+
+export const signOut = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: 'SIGNOUT_USER' });
+  };
+};

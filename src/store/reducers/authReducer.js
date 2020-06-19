@@ -48,6 +48,12 @@ const authReducer = (state = initState, action) => {
         ...state,
         authError: 'SignIn failed',
       };
+    case 'SIGNOUT_USER':
+      return {
+        ...state,
+        authToken: null,
+        authError: null,
+      };
     default:
       return state;
   }
