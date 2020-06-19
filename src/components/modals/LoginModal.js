@@ -26,6 +26,7 @@ class LoginModal extends Component {
     alert_el: null,
     userEmail: '',
     userPassword: '',
+    disabled: false,
   };
 
   handleChange = (e) => {
@@ -40,21 +41,19 @@ class LoginModal extends Component {
       email: this.state.userEmail,
       password: this.state.userPassword,
     });
+
+    this.setState({ disabled: true });
     // here will be ajax api call for login
   };
 
   componentDidUpdate(prevProps, prevState) {
-    // if (
-    //   prevProps.registerLoading !== this.props.registerLoading &&
-    //   !this.props.registerLoading &&
-    //   !this.props.show &&
-    //   !this.props.regError
-    // ) {
-    //   this.props.onLoginModalToggle();
-    // }
     if (prevProps.authToken !== this.props.authToken && this.props.authToken) {
       this.props.onLoginModalToggle();
       this.props.history.push('restaurants');
+      this.setState({ disabled: false });
+    }
+    if (prevProps.authLoading && !this.props.authLoading) {
+      this.setState({ disabled: false });
     }
   }
 
@@ -65,8 +64,6 @@ class LoginModal extends Component {
         <Modal
           className=''
           centered
-          //   style={{ width: 600 }}
-          // size='sm'
           isOpen={this.props.show}
           toggle={this.props.onLoginModalToggle}
         >
@@ -125,7 +122,12 @@ class LoginModal extends Component {
                         required
                       />
                     </FormGroup>
-                    <Button block className='btn-round mt-4' color='danger'>
+                    <Button
+                      block
+                      className='btn-round mt-4'
+                      color='danger'
+                      disabled={this.state.disabled}
+                    >
                       Login
                     </Button>
                     <div className='red-text center'>
@@ -157,6 +159,7 @@ const mapStateToProps = (state) => {
     authError: state.auth.authError,
     regError: state.auth.regError,
     registerLoading: state.auth.registerLoading,
+    authLoading: state.auth.authLoading,
     authToken: state.auth.authToken,
   };
 };
