@@ -88,7 +88,7 @@ export const updateDish = (dish) => {
       .then((res) => {
         dispatch({
           type: "UPDATE_DISHES_SUCCESS",
-          dishes: res.data,
+          dish: res.data,
         });
       })
       .catch((err) => {
