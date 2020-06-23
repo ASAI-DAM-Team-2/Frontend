@@ -30,7 +30,11 @@ const drop_styles = {
 
 class UserPage extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchUser());
+    if (!this.props.authToken) {
+      this.props.history.push("/");
+    } else {
+      this.props.dispatch(fetchUser());
+    }
   }
   state = {
     alert_el: null,
