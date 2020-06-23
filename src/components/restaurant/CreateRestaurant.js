@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Button,
   Modal,
@@ -10,31 +10,30 @@ import {
   Label,
   Form,
   FormGroup,
-} from 'reactstrap';
-import './CreateRestaurant.scss';
-import { connect } from 'react-redux';
-import { createRestaurant } from '../../store/actions/restaurantActions';
+} from "reactstrap";
+import "./CreateRestaurant.scss";
+import { connect } from "react-redux";
+import { createRestaurant } from "../../store/actions/restaurantActions";
 
 class CreateRestaurant extends Component {
   state = {
     modal: false,
     backdrop: true,
     keyboard: true,
-    restaurantName: '',
-    restaurantAddress: '',
-    companyId: '1',
-    createTitle: 'create',
+    restaurantName: "",
+    restaurantAddress: "",
+    companyId: "1",
+    createTitle: "create",
   };
 
   toggle = () => {
-    console.log('modal');
     this.setState({ modal: !this.state.modal });
-    this.setState({ createTitle: 'create' });
+    this.setState({ createTitle: "create" });
   };
 
   changeBackdrop = (e) => {
     let value = e.target.value;
-    if (value !== 'static') {
+    if (value !== "static") {
       value = JSON.parse(value);
     }
     this.setState({
@@ -53,13 +52,12 @@ class CreateRestaurant extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { restaurantName, restaurantAddress, companyId } = this.state;
-    // console.log(this.props);
     this.props.createRestaurant({
       restaurantName,
       restaurantAddress,
       companyId,
     });
-    this.setState({ createTitle: 'creating...' });
+    this.setState({ createTitle: "creating..." });
   };
 
   componentDidUpdate(prevProps) {
@@ -70,20 +68,18 @@ class CreateRestaurant extends Component {
     ) {
       this.toggle();
     }
-
-    // console.log('did update', prevProps);
   }
 
   render() {
     return (
-      <div className='create-restaurant'>
+      <div className="create-restaurant">
         <Form inline onSubmit={(e) => e.preventDefault()}>
           <Button
-            className='add-button'
-            color='success'
+            className="add-button"
+            color="success"
             onClick={this.toggle.bind(this)}
           >
-            <i className='fa fa-plus'></i>
+            <i className="fa fa-plus"></i>
             <span>New</span>
           </Button>
         </Form>
@@ -92,7 +88,7 @@ class CreateRestaurant extends Component {
           toggle={this.toggle.bind(this)}
           backdrop={this.state.backdrop}
           keyboard={this.state.keyboard}
-          className='add-modal'
+          className="add-modal"
         >
           <ModalHeader toggle={this.toggle.bind(this)}>
             Create Restaurant
@@ -100,44 +96,44 @@ class CreateRestaurant extends Component {
           <ModalBody>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <Label for='restaurantName'>Restaurant name</Label>
+                <Label for="restaurantName">Restaurant name</Label>
                 <Input
-                  type='text'
-                  id='restaurantName'
-                  placeholder='Restaurant name'
+                  type="text"
+                  id="restaurantName"
+                  placeholder="Restaurant name"
                   onChange={this.handleChange}
                   required
                 />
               </FormGroup>
               <FormGroup>
-                <Label for='restaurantAddress'>Address</Label>
+                <Label for="restaurantAddress">Address</Label>
                 <Input
-                  type='text'
-                  id='restaurantAddress'
-                  placeholder='Restaurant address'
+                  type="text"
+                  id="restaurantAddress"
+                  placeholder="Restaurant address"
                   onChange={this.handleChange}
                   required
                 />
               </FormGroup>
               <FormGroup>
-                <Label for='companyId'>Associated with company</Label>
+                <Label for="companyId">Associated with company</Label>
                 <Input
-                  type='select'
-                  name='select'
-                  id='companyId'
+                  type="select"
+                  name="select"
+                  id="companyId"
                   onChange={this.handleChange}
                   required
                 >
-                  <option value='1'>Coca cola</option>
-                  <option value='2'>Pepsi</option>
-                  <option value='3'>Pizza Hut</option>
-                  <option value='4'>Doritos s.r.o</option>
-                  <option value='5'>Mamamia</option>
+                  <option value="1">Coca cola</option>
+                  <option value="2">Pepsi</option>
+                  <option value="3">Pizza Hut</option>
+                  <option value="4">Doritos s.r.o</option>
+                  <option value="5">Mamamia</option>
                 </Input>
               </FormGroup>
-              <div className='action-buttons'>
-                <Button color='success'>{this.state.createTitle}</Button>
-                <Button color='secondary' onClick={this.toggle.bind(this)}>
+              <div className="action-buttons">
+                <Button color="success">{this.state.createTitle}</Button>
+                <Button color="secondary" onClick={this.toggle.bind(this)}>
                   Cancel
                 </Button>
               </div>

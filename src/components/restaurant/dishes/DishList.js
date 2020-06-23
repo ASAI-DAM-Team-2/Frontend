@@ -15,11 +15,8 @@ class DishList extends Component {
     this.props.deleteRestaurantDish(id);
     this.setState({ deleteId: id });
   };
-  componentDidUpdate() {
-    console.log(this.props.dishes[2]);
-  }
   render() {
-    const dishes = this.props.dishes;
+    let dishes = this.props.dishes;
     const updateLoading = this.props.updateLoading;
     return (
       <React.Fragment>
