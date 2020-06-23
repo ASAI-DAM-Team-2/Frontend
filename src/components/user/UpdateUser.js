@@ -11,24 +11,18 @@ import {
   Form,
   FormGroup,
 } from "reactstrap";
-import "./CreateDish.scss";
+import "./UpdateUser.scss";
 import { connect } from "react-redux";
-import { updateDish } from "../../../store/actions/dishesActions";
+import { updateUser } from "../../store/actions/userActions";
 
-import "./list.scss";
-
-class CreateDish extends Component {
+class UpdateUser extends Component {
   state = {
     modal: false,
     backdrop: true,
     keyboard: true,
-    dishTitle: this.props.dish.title,
-    dishName: this.props.dish.name,
-    dishPrice: this.props.dish.price,
-    dishPicture: this.props.dish.picture,
-    dishDescription: this.props.dish.description,
-    dishRestaurant_id: 132,
-    dishDish_id: this.props.dish.dish_id,
+    userEmail: this.props.userData.Email,
+    userName: this.props.userData.Name,
+    userSurname: this.props.userData.Surname,
     updateTitle: "Update",
   };
 
@@ -57,23 +51,11 @@ class CreateDish extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    const {
-      dishTitle,
-      dishName,
-      dishPrice,
-      dishPicture,
-      dishDescription,
-      dishRestaurant_id,
-      dishDish_id,
-    } = this.state;
-    this.props.updateDish({
-      dishTitle,
-      dishName,
-      dishPrice,
-      dishPicture,
-      dishDescription,
-      dishRestaurant_id,
-      dishDish_id,
+    const { userEmail, userName, userSurname } = this.state;
+    this.props.updateUser({
+      userEmail,
+      userName,
+      userSurname,
     });
     this.setState({ updateTitle: "Updating..." });
   };
@@ -90,14 +72,14 @@ class CreateDish extends Component {
 
   render() {
     return (
-      <div className="update-dish list-button-update">
+      <div className="update-user">
         <Form inline onSubmit={(e) => e.preventDefault()}>
           <Button
             className="w-100"
             color="info"
             onClick={this.toggle.bind(this)}
           >
-            &#9998;
+            Edit
           </Button>
         </Form>
         <Modal
@@ -107,61 +89,44 @@ class CreateDish extends Component {
           keyboard={this.state.keyboard}
           className="add-modal"
         >
-          <ModalHeader toggle={this.toggle.bind(this)}>Update Dish</ModalHeader>
+          <ModalHeader toggle={this.toggle.bind(this)}>Update User</ModalHeader>
           <ModalBody>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <Label for="dishTitle">Dish title</Label>
+                <Label for="userEmail">User email</Label>
+                <Input
+                  type="email"
+                  id="userEmail"
+                  placeholder="User email"
+                  onChange={this.handleChange}
+                  required
+                  value={this.state.userEmail}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="userName">User first name</Label>
                 <Input
                   type="text"
-                  id="dishTitle"
-                  placeholder="Dish title"
+                  id="userName"
+                  placeholder="User first name"
                   onChange={this.handleChange}
-                  required
-                  value={this.state.dishTitle}
+                  value={
+                    this.state.userName === null ? "" : this.state.userName
+                  }
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="dishName">Dish name</Label>
+                <Label for="userSurname">User surname</Label>
                 <Input
                   type="text"
-                  id="dishName"
-                  placeholder="Dish name"
+                  id="userSurname"
+                  placeholder="User surname"
                   onChange={this.handleChange}
-                  required
-                  value={this.state.dishName}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="dishPrice">Price</Label>
-                <Input
-                  type="number"
-                  id="dishPrice"
-                  step="0.01"
-                  min="0"
-                  onChange={this.handleChange}
-                  required
-                  value={this.state.dishPrice}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="dishPicture">Picture</Label>
-                <Input
-                  type="text"
-                  id="dishPicture"
-                  onChange={this.handleChange}
-                  required
-                  value={this.state.dishPicture}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="dishDescription">Description</Label>
-                <Input
-                  type="textarea"
-                  id="dishDescription"
-                  onChange={this.handleChange}
-                  required
-                  value={this.state.dishDescription}
+                  value={
+                    this.state.userSurname === null
+                      ? ""
+                      : this.state.userSurname
+                  }
                 />
               </FormGroup>
               <div className="action-buttons">
@@ -179,8 +144,8 @@ class CreateDish extends Component {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateDish: (dish) => dispatch(updateDish(dish)),
+    updateUser: (user) => dispatch(updateUser(user)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(CreateDish);
+export default connect(null, mapDispatchToProps)(UpdateUser);

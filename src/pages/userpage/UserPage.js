@@ -16,6 +16,11 @@ import "./UserPage.scss";
 import Alert from "../../components/alert/Alert";
 import MSelect from "../../components/multiselect/multiselect";
 
+import { fetchUser } from "../../store/actions/userActions";
+import { connect } from "react-redux";
+
+import UpdateUser from "../../components/user/UpdateUser.js";
+
 const drop_styles = {
   border: "1px dashed black",
   width: "100%",
@@ -24,6 +29,13 @@ const drop_styles = {
 };
 
 class UserPage extends Component {
+  componentDidMount() {
+    if (!this.props.authToken) {
+      this.props.history.push("/");
+    } else {
+      this.props.dispatch(fetchUser());
+    }
+  }
   state = {
     alert_el: null,
     options: [
@@ -35,7 +47,17 @@ class UserPage extends Component {
       ,
     ],
   };
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.user.Email !== this.props.user.Email ||
+      prevProps.user.Name !== this.props.user.Name ||
+      prevProps.user.Surname !== this.props.user.Surname
+    ) {
+      this.setState({ alert_el: <Alert message="Success!" type="success" /> });
+    }
+  }
   render() {
+    const { user, updateLoading } = this.props;
     return (
       <React.Fragment>
         <div className="user-layout">
@@ -47,7 +69,6 @@ class UserPage extends Component {
             >
               <h1 className="text-center">User settings</h1>
               <div id="user-menu" className="form-row text-center">
-                {this.state.alert_el}
                 <div className="w-25">
                   <img
                     src="/user.jpg"
@@ -61,46 +82,37 @@ class UserPage extends Component {
                 </div>
               </div>
               <div className="user-list">
+                {this.state.alert_el}
                 <ListGroup flush>
-                  <ListGroupItem>
-                    <MSelect
-                      options={this.state.options}
-                      heading="Choose your allergens"
-                    />
+                  {
+                    // <ListGroupItem>
+                    //   <MSelect
+                    //     options={this.state.options}
+                    //     heading="Choose your allergens"
+                    //   />
+                    // </ListGroupItem>
+                  }
+                  <ListGroupItem className="user-item" title="Email">
+                    <div className="user-description">{user.Email}</div>
                   </ListGroupItem>
                   <ListGroupItem className="user-item">
-                    <div className="user-description">User name</div>
-                    <div className="user-buttons">
-                      <Button className="btn-link" color="primary">
-                        edit
-                      </Button>
+                    <div className="user-description" title="First name">
+                      {user.Name === "" || user.Name === null
+                        ? "\u00A0"
+                        : user.Name}
                     </div>
                   </ListGroupItem>
                   <ListGroupItem className="user-item">
-                    <div className="user-description">Current password</div>
-                    <div className="user-buttons">
-                      <Button className="btn-link" color="primary">
-                        edit
-                      </Button>
-                    </div>
-                  </ListGroupItem>
-                  <ListGroupItem className="user-item">
-                    <div className="user-description">New password</div>
-                    <div className="user-buttons">
-                      <Button className="btn-link" color="primary">
-                        edit
-                      </Button>
-                    </div>
-                  </ListGroupItem>
-                  <ListGroupItem className="user-item">
-                    <div className="user-description">Repeat new password</div>
-                    <div className="user-buttons">
-                      <Button className="btn-link" color="primary">
-                        edit
-                      </Button>
+                    <div className="user-description" title="Surname">
+                      {user.Surname === "" || user.Surname === null
+                        ? "\u00A0"
+                        : user.Surname}
                     </div>
                   </ListGroupItem>
                 </ListGroup>
+              </div>
+              <div className="user-buttons">
+                <UpdateUser userData={user} updateLoading={updateLoading} />
               </div>
             </Card>
           </Container>
@@ -110,4 +122,12 @@ class UserPage extends Component {
   }
 }
 
-export default UserPage;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user.user,
+    updateLoading: state.user.updateLoading,
+    authToken: state.auth.authToken,
+  };
+};
+
+export default connect(mapStateToProps)(UserPage);
