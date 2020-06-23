@@ -119,7 +119,6 @@ class UpdateUser extends Component {
                   onChange={this.handleChange}
                   required
                   value={this.state.userEmail}
-                  autoFocus={this.props.activeInput == "email" ? true : false}
                 />
               </FormGroup>
               <FormGroup>
@@ -131,7 +130,6 @@ class UpdateUser extends Component {
                   onChange={this.handleChange}
                   required
                   value={this.state.userName}
-                  autoFocus={this.props.activeInput == "name" ? true : false}
                 />
               </FormGroup>
               <FormGroup>
@@ -143,7 +141,6 @@ class UpdateUser extends Component {
                   onChange={this.handleChange}
                   required
                   value={this.state.userSurname}
-                  autoFocus={this.props.activeInput == "surname" ? true : false}
                 />
               </FormGroup>
               <div className="action-buttons">
