@@ -39,15 +39,16 @@ const userReducer = (state = initState, action) => {
     case "UPDATE_USER_SUCCESS":
       return {
         ...state,
-        user: [...state.user, action.user],
+        user: action.user,
         error: null,
         updateLoading: false,
       };
 
     case "UPDATE_USER_ERROR":
+      console.log(action);
       return {
         ...state,
-        error: action.err,
+        error: action.user,
         fetchLoading: false,
         updateLoading: false,
       };

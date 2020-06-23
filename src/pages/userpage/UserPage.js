@@ -47,6 +47,15 @@ class UserPage extends Component {
       ,
     ],
   };
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.user.Email !== this.props.user.Email ||
+      prevProps.user.Name !== this.props.user.Name ||
+      prevProps.user.Surname !== this.props.user.Surname
+    ) {
+      this.setState({ alert_el: <Alert message="Success!" type="success" /> });
+    }
+  }
   render() {
     const { user, updateLoading } = this.props;
     return (
@@ -60,7 +69,6 @@ class UserPage extends Component {
             >
               <h1 className="text-center">User settings</h1>
               <div id="user-menu" className="form-row text-center">
-                {this.state.alert_el}
                 <div className="w-25">
                   <img
                     src="/user.jpg"
@@ -74,6 +82,7 @@ class UserPage extends Component {
                 </div>
               </div>
               <div className="user-list">
+                {this.state.alert_el}
                 <ListGroup flush>
                   {
                     // <ListGroupItem>
