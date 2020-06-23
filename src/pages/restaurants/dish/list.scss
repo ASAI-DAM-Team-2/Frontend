@@ -12,19 +12,15 @@
   float: left;
 }
 
-.list-heading__text,
-.list-heading__address {
-  display: inline-block;
-  float: left;
-}
-
 .list-heading__text {
   font-size: 40px;
   margin-top: 20px;
+  display: block;
 }
 
 .list-heading__address {
   font-size: 30px;
+  display: inline-block;
 }
 
 .list-top {
