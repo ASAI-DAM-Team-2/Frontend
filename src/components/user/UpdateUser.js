@@ -122,11 +122,11 @@ class UpdateUser extends Component {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="userName">User name</Label>
+                <Label for="userName">User first name</Label>
                 <Input
                   type="text"
                   id="userName"
-                  placeholder="User name"
+                  placeholder="User first name"
                   onChange={this.handleChange}
                   required
                   value={this.state.userName}

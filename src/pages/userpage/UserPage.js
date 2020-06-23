@@ -80,13 +80,17 @@ class UserPage extends Component {
                     // </ListGroupItem>
                   }
                   <ListGroupItem className="user-item">
-                    <div className="user-description">{user.Email}</div>
+                    <div className="user-description">Email: {user.Email}</div>
                   </ListGroupItem>
                   <ListGroupItem className="user-item">
-                    <div className="user-description">{user.Name}</div>
+                    <div className="user-description">
+                      First name: {user.Name}
+                    </div>
                   </ListGroupItem>
                   <ListGroupItem className="user-item">
-                    <div className="user-description">{user.Surname}</div>
+                    <div className="user-description">
+                      Surname: {user.Surname}
+                    </div>
                   </ListGroupItem>
                 </ListGroup>
               </div>
