@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import React, { Component } from "react";
+import { Container, Row, Col } from "reactstrap";
 
-import DishList from '../../../components/restaurant/dishes/DishList';
-import CreateDish from '../../../components/restaurant/dishes/CreateDish';
+import DishList from "../../../components/restaurant/dishes/DishList";
+import CreateDish from "../../../components/restaurant/dishes/CreateDish";
 
 import {
   fetchRestaurantDishes,
   deleteRestaurantDish,
-} from '../../../store/actions/dishesActions';
-import { connect } from 'react-redux';
+} from "../../../store/actions/dishesActions";
+import { connect } from "react-redux";
 
-import DishView from './DishView';
-import './list.scss';
+import DishView from "./DishView";
+import "./list.scss";
 
 class DishesListPage extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class DishesListPage extends Component {
 
   componentDidMount() {
     if (!this.props.authToken) {
-      this.props.history.push('/');
+      this.props.history.push("/");
     } else {
       this.props.dispatch(fetchRestaurantDishes(this.state.restaurant_id));
     }
@@ -51,32 +51,28 @@ class DishesListPage extends Component {
   }
 
   dishDelivery(restaurant_id, dish_id) {
-    console.log('Dish delivery ' + dish_id + ' id ' + restaurant_id);
+    console.log("Dish delivery " + dish_id + " id " + restaurant_id);
   }
 
   state = {
     restaurant_id: 132,
     dish_el: null,
-    image: '/user.jpg',
-    heading: 'Restaurant name',
-    address: 'Restaurant address',
+    image: "/user.jpg",
+    heading: "Restaurant name",
+    address: "Restaurant address",
   };
   render() {
     const { dishes, deleteLoading, createLoading, updateLoading } = this.props;
     return (
       <React.Fragment>
-        <Container fluid className='list-top'>
+        <Container fluid className="list-top">
           <Container>
             <Row>
-              <Col className='list-heading-col'>
-                <div className='list-heading'>
-                  <img src={this.state.image} className='list-image' alt='' />
-                  <div className='list-heading__text'>{this.state.heading}</div>
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <div className='list-heading__address'>
+              <Col className="list-heading-col">
+                <div className="list-heading">
+                  <img src={this.state.image} className="list-image" alt="" />
+                  <div className="list-heading__text">{this.state.heading}</div>
+                  <div className="list-heading__address">
                     {this.state.address}
                   </div>
                 </div>
@@ -89,13 +85,13 @@ class DishesListPage extends Component {
             <React.Fragment>
               <Row>
                 <Col>
-                  <div className='d-block w-100'>
+                  <div className="d-block w-100">
                     <CreateDish createLoading={createLoading} />
                   </div>
                 </Col>
               </Row>
               <Row>
-                <Col className='text-center mt-4'>
+                <Col className="text-center mt-4">
                   <DishList
                     dishes={dishes}
                     deleteLoading={deleteLoading}
@@ -106,10 +102,10 @@ class DishesListPage extends Component {
               </Row>
             </React.Fragment>
           ) : (
-            <div className='list-deatil'>{this.state.dish_el}</div>
+            <div className="list-deatil">{this.state.dish_el}</div>
           )}
         </Container>
-        <div className='list-footer' />
+        <div className="list-footer" />
       </React.Fragment>
     );
   }

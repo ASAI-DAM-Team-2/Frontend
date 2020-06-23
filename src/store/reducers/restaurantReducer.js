@@ -8,16 +8,14 @@ const initState = {
 };
 const restaurantReducer = (state = initState, action) => {
   switch (action.type) {
-    case 'FETCH_RESTAURANT_STARTED':
-      console.log('fetching restaurant');
+    case "FETCH_RESTAURANT_STARTED":
       return {
         ...state,
         fetchLoading: true,
         error: null,
       };
 
-    case 'FETCH_RESTAURANT_SUCCESS':
-      console.log('fetch restaurant success');
+    case "FETCH_RESTAURANT_SUCCESS":
       return {
         ...state,
         error: null,
@@ -25,25 +23,21 @@ const restaurantReducer = (state = initState, action) => {
         restaurants: action.restaurants,
       };
 
-    case 'FETCH_RESTAURANT_ERROR':
-      console.log('fetch restaurant error');
-
+    case "FETCH_RESTAURANT_ERROR":
       return {
         ...state,
         fetchLoading: false,
         error: action.err,
       };
 
-    case 'CREATE_RESTAURANT_STARTED':
-      console.log('created started');
+    case "CREATE_RESTAURANT_STARTED":
       return {
         ...state,
         error: null,
         createLoading: true,
       };
 
-    case 'CREATE_RESTAURANT_SUCCESS':
-      console.log('create restaurant success', action.restaurant);
+    case "CREATE_RESTAURANT_SUCCESS":
       return {
         ...state,
         restaurants: [...state.restaurants, action.restaurant],
@@ -51,8 +45,7 @@ const restaurantReducer = (state = initState, action) => {
         createLoading: false,
       };
 
-    case 'CREATE_RESTAURANT_ERROR':
-      console.log('create restaurant error', action.err);
+    case "CREATE_RESTAURANT_ERROR":
       return {
         ...state,
         error: action.err,
@@ -60,15 +53,13 @@ const restaurantReducer = (state = initState, action) => {
         createLoading: false,
       };
 
-    case 'DELETE_RESTAURANT_STARTED':
-      console.log('delete restaurant started');
+    case "DELETE_RESTAURANT_STARTED":
       return {
         ...state,
         deleteLoading: true,
       };
 
-    case 'DELETE_RESTAURANT_SUCCESS':
-      console.log('delete restaurant success');
+    case "DELETE_RESTAURANT_SUCCESS":
       return {
         ...state,
         deleteLoading: false,
@@ -76,26 +67,21 @@ const restaurantReducer = (state = initState, action) => {
           (restaurant) => restaurant.restaurant_id !== action.id
         ),
       };
-    case 'DELETE_RESTAURANT_ERROR':
-      console.log('delete restaurant error');
-
+    case "DELETE_RESTAURANT_ERROR":
       return {
         ...state,
         deleteLoading: false,
         error: action.err,
       };
 
-    case 'EDIT_RESTAURANT_STARTED':
-      console.log('created started');
+    case "EDIT_RESTAURANT_STARTED":
       return {
         ...state,
         error: null,
         editLoading: true,
       };
 
-    case 'EDIT_RESTAURANT_SUCCESS':
-      console.log('create restaurant success', action.restaurant);
-
+    case "EDIT_RESTAURANT_SUCCESS":
       return {
         ...state,
         restaurants: state.restaurants.map((restaurant) => {
@@ -113,14 +99,13 @@ const restaurantReducer = (state = initState, action) => {
         editLoading: false,
       };
 
-    case 'EDIT_RESTAURANT_ERROR':
-      console.log('create restaurant error', action.err);
+    case "EDIT_RESTAURANT_ERROR":
       return {
         ...state,
         error: action.err,
         editLoading: false,
       };
-    case 'REMOVE_RESTAURANTS':
+    case "REMOVE_RESTAURANTS":
       return {
         ...state,
         restaurants: [],

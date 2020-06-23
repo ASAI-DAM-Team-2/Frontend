@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 // nodejs library that concatenates strings
-import classnames from 'classnames';
-import './Navbar.scss';
-import { withRouter } from 'react-router-dom';
+import classnames from "classnames";
+import "./Navbar.scss";
+import { withRouter } from "react-router-dom";
 // reactstrap components
 import {
   Button,
@@ -13,17 +13,17 @@ import {
   NavLink,
   Nav,
   Container,
-} from 'reactstrap';
-import { Link } from 'react-router-dom';
+} from "reactstrap";
+import { Link } from "react-router-dom";
 
 class IndexNavbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      navbarColor: 'navbar-transparent',
-      navbarCollapse: 'false',
-      navbarPosition: '',
-      transparentPages: ['/', '/register'],
+      navbarColor: "navbar-transparent",
+      navbarCollapse: "false",
+      navbarPosition: "",
+      transparentPages: ["/", "/register"],
       isTransparentNav: false,
     };
   }
@@ -37,15 +37,11 @@ class IndexNavbar extends React.Component {
       this.setNavbarClasses();
     });
 
-    window.addEventListener('scroll', this.updateNavbarColor.bind(this));
+    window.addEventListener("scroll", this.updateNavbarColor.bind(this));
 
     return function cleanup() {
-      window.removeEventListener('scroll', this.updateNavbarColor.bind(this));
+      window.removeEventListener("scroll", this.updateNavbarColor.bind(this));
     };
-  }
-
-  componentDidUpdate(prevProps) {
-    // console.log(prevProps);
   }
 
   setNavbarClasses() {
@@ -57,13 +53,13 @@ class IndexNavbar extends React.Component {
     });
     if (!isTransparentNav) {
       this.setState({
-        navbarColor: '',
-        navbarPosition: '',
+        navbarColor: "",
+        navbarPosition: "",
       });
     } else {
       this.setState({
-        navbarColor: 'navbar-transparent',
-        navbarPosition: 'fixed-top',
+        navbarColor: "navbar-transparent",
+        navbarPosition: "fixed-top",
       });
     }
   }
@@ -75,14 +71,14 @@ class IndexNavbar extends React.Component {
         document.body.scrollTop > 299
       ) {
         this.setState({
-          navbarColor: '',
+          navbarColor: "",
         });
       } else if (
         document.documentElement.scrollTop < 300 ||
         document.body.scrollTop < 300
       ) {
         this.setState({
-          navbarColor: 'navbar-transparent',
+          navbarColor: "navbar-transparent",
         });
       }
     }
@@ -92,99 +88,97 @@ class IndexNavbar extends React.Component {
     this.setState({
       setNavbarCollapse: !this.state.navbarCollapse,
     });
-    document.documentElement.classList.toggle('nav-open');
+    document.documentElement.classList.toggle("nav-open");
   }
 
   render() {
     const { onLoginModalToggle, history } = this.props;
     const { navbarColor, navbarPosition, navbarCollapse } = this.state;
 
-    // console.log(this.props.navigation.state.routeName);
-
     return (
-      <Navbar className={classnames(navbarPosition, navbarColor)} expand='lg'>
+      <Navbar className={classnames(navbarPosition, navbarColor)} expand="lg">
         <Container>
-          <div className='navbar-translate'>
+          <div className="navbar-translate">
             <NavbarBrand
-              id='navbar-brand'
-              data-placement='bottom'
-              onClick={() => history.push('/')}
-              title='Taste it, everywhere, everywhen.'
+              id="navbar-brand"
+              data-placement="bottom"
+              onClick={() => history.push("/")}
+              title="Taste it, everywhere, everywhen."
             >
-              <span className='navbar-text'>Dish delivery</span>
+              <span className="navbar-text">Dish delivery</span>
             </NavbarBrand>
             <button
               aria-expanded={navbarCollapse}
-              className={classnames('navbar-toggler navbar-toggler', {
+              className={classnames("navbar-toggler navbar-toggler", {
                 toggled: navbarCollapse,
               })}
               onClick={this.toggleNavbarCollapse.bind(this)}
             >
-              <span className='navbar-toggler-bar bar1' />
-              <span className='navbar-toggler-bar bar2' />
-              <span className='navbar-toggler-bar bar3' />
+              <span className="navbar-toggler-bar bar1" />
+              <span className="navbar-toggler-bar bar2" />
+              <span className="navbar-toggler-bar bar3" />
             </button>
           </div>
           <Collapse
-            className='justify-content-end'
+            className="justify-content-end"
             navbar
             isOpen={navbarCollapse}
           >
             <Nav navbar>
               <NavItem>
                 <NavLink
-                  data-placement='bottom'
-                  href='https://twitter.com/CreativeTim?ref=creativetim'
-                  target='_blank'
-                  title='Follow us on Twitter'
+                  data-placement="bottom"
+                  href="https://twitter.com/CreativeTim?ref=creativetim"
+                  target="_blank"
+                  title="Follow us on Twitter"
                 >
-                  <i className='fa fa-twitter' />
-                  <p className='d-lg-none'>Twitter</p>
+                  <i className="fa fa-twitter" />
+                  <p className="d-lg-none">Twitter</p>
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink
-                  data-placement='bottom'
-                  href='https://www.facebook.com/CreativeTim?ref=creativetim'
-                  target='_blank'
-                  title='Like us on Facebook'
+                  data-placement="bottom"
+                  href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                  target="_blank"
+                  title="Like us on Facebook"
                 >
-                  <i className='fa fa-facebook-square' />
-                  <p className='d-lg-none'>Facebook</p>
+                  <i className="fa fa-facebook-square" />
+                  <p className="d-lg-none">Facebook</p>
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink
-                  data-placement='bottom'
-                  href='https://www.instagram.com/CreativeTimOfficial?ref=creativetim'
-                  target='_blank'
-                  title='Follow us on Instagram'
+                  data-placement="bottom"
+                  href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+                  target="_blank"
+                  title="Follow us on Instagram"
                 >
-                  <i className='fa fa-instagram' />
-                  <p className='d-lg-none'>Instagram</p>
+                  <i className="fa fa-instagram" />
+                  <p className="d-lg-none">Instagram</p>
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink
-                  data-placement='bottom'
-                  href='https://www.github.com/CreativeTimOfficial/paper-kit-react?ref=creativetim'
-                  target='_blank'
-                  title='Star on GitHub'
+                  data-placement="bottom"
+                  href="https://www.github.com/CreativeTimOfficial/paper-kit-react?ref=creativetim"
+                  target="_blank"
+                  title="Star on GitHub"
                 >
-                  <i className='fa fa-github' />
-                  <p className='d-lg-none'>GitHub</p>
+                  <i className="fa fa-github" />
+                  <p className="d-lg-none">GitHub</p>
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href='#' onClick={onLoginModalToggle}>
-                  <i className='nc-icon nc-book-bookmark' /> Login
+                <NavLink href="#" onClick={onLoginModalToggle}>
+                  <i className="nc-icon nc-book-bookmark" /> Login
                 </NavLink>
               </NavItem>
               <NavItem>
                 <Button
-                  className='btn-round'
-                  color='danger'
-                  onClick={() => history.push('register')}
+                  className="btn-round"
+                  color="danger"
+                  onClick={() => history.push("register")}
                 >
                   Sign up
                 </Button>

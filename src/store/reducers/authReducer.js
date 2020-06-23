@@ -8,47 +8,41 @@ const initState = {
 };
 const authReducer = (state = initState, action) => {
   switch (action.type) {
-    case 'REGISTER_USER_STARTED':
-      console.log('reg started');
+    case "REGISTER_USER_STARTED":
       return {
         ...state,
         registerLoading: true,
       };
-    case 'REGISTER_USER_SUCCESS':
-      console.log('reg success');
+    case "REGISTER_USER_SUCCESS":
       return {
         ...state,
         regError: null,
         regSuccess: true,
         registerLoading: false,
       };
-    case 'REGISTER_USER_ERROR':
-      console.log('reg error');
+    case "REGISTER_USER_ERROR":
       return {
         ...state,
-        regError: 'Register failed',
+        regError: "Register failed",
         regSuccess: null,
         registerLoading: false,
       };
-    case 'AUTH_USER_STARTED':
-      console.log('auth started');
+    case "AUTH_USER_STARTED":
       return state;
 
-    case 'AUTH_USER_SUCCESS':
-      console.log('auth user success');
+    case "AUTH_USER_SUCCESS":
       return {
         ...state,
         authToken: action.credentials.access_token,
         authError: null,
       };
 
-    case 'AUTH_USER_ERROR':
-      console.log('auth user error');
+    case "AUTH_USER_ERROR":
       return {
         ...state,
-        authError: 'SignIn failed',
+        authError: "SignIn failed",
       };
-    case 'SIGNOUT_USER':
+    case "SIGNOUT_USER":
       return {
         ...state,
         authToken: null,

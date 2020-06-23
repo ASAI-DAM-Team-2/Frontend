@@ -53,10 +53,6 @@ class IndexNavbar extends React.Component {
     };
   }
 
-  componentDidUpdate(prevProps) {
-    // console.log(prevProps);
-  }
-
   setNavbarClasses() {
     const isTransparentNav = this.state.transparentPages.includes(
       this.props.history.location.pathname
@@ -114,8 +110,6 @@ class IndexNavbar extends React.Component {
   render() {
     const { history } = this.props;
     const { navbarColor, navbarPosition, navbarCollapse } = this.state;
-
-    // console.log(this.props.navigation.state.routeName);
 
     return (
       <Navbar className={classnames(navbarPosition, navbarColor)} expand="lg">

@@ -45,7 +45,6 @@ const userReducer = (state = initState, action) => {
       };
 
     case "UPDATE_USER_ERROR":
-      console.log(action);
       return {
         ...state,
         error: action.user,
