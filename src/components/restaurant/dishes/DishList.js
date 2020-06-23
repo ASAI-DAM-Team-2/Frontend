@@ -15,20 +15,11 @@ class DishList extends Component {
     this.props.deleteRestaurantDish(id);
     this.setState({ deleteId: id });
   };
-  removeDupliciteDishes(dishes) {
-    const new_dishes = dishes.reduce((acc, current) => {
-      const x = acc.find((item) => item.dish_id === current.dish_id);
-      if (!x) {
-        return acc.concat([current]);
-      } else {
-        return acc;
-      }
-    }, []);
-    return new_dishes;
+  componentDidUpdate() {
+    console.log(this.props.dishes[2]);
   }
   render() {
-    let dishes = this.props.dishes.reverse();
-    dishes = this.removeDupliciteDishes(dishes);
+    const dishes = this.props.dishes;
     const updateLoading = this.props.updateLoading;
     return (
       <React.Fragment>
