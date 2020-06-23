@@ -201,6 +201,7 @@ const mapDispatchToProps = (dispatch) => {
     removeRestaurants: () => dispatch(removeRestaurants()),
     removeDishes: () => dispatch(removeDishes()),
     signOut: () => dispatch(signOut()),
+    dispatch,
   };
 };
 
@@ -210,4 +211,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(withRouter(IndexNavbar));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(IndexNavbar));
