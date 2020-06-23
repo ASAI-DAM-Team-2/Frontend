@@ -117,6 +117,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.user.user,
     updateLoading: state.user.updateLoading,
+    authToken: state.auth.authToken,
   };
 };
 
