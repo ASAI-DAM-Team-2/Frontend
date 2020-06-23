@@ -56,7 +56,7 @@ export const updateUser = (user) => {
       .then((res) => {
         dispatch({
           type: "UPDATE_USER_SUCCESS",
-          dishes: res.data,
+          user: res.data,
         });
       })
       .catch((err) => {
