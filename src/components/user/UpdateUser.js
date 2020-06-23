@@ -128,8 +128,9 @@ class UpdateUser extends Component {
                   id="userName"
                   placeholder="User first name"
                   onChange={this.handleChange}
-                  required
-                  value={this.state.userName}
+                  value={
+                    this.state.userName === null ? "" : this.state.userName
+                  }
                 />
               </FormGroup>
               <FormGroup>
@@ -139,8 +140,11 @@ class UpdateUser extends Component {
                   id="userSurname"
                   placeholder="User surname"
                   onChange={this.handleChange}
-                  required
-                  value={this.state.userSurname}
+                  value={
+                    this.state.userSurname === null
+                      ? ""
+                      : this.state.userSurname
+                  }
                 />
               </FormGroup>
               <div className="action-buttons">
