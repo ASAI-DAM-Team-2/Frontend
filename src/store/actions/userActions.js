@@ -1,5 +1,5 @@
-import axios from "axios";
-require("dotenv").config();
+import axios from 'axios';
+require('dotenv').config();
 
 export const fetchUser = () => {
   return (dispatch, getState) => {
@@ -9,20 +9,20 @@ export const fetchUser = () => {
         Authorization: `Bearer ${authToken}`,
       },
     };
-    dispatch({ type: "FETCH_USER_STARTED" });
+    dispatch({ type: 'FETCH_USER_STARTED' });
     axios
       .get(
-        `https://allergyappbackend.azurewebsites.net/api/account/userinfo`,
+        `http://allergyappipb.azurewebsites.net/api/account/userinfo`,
         header
       )
       .then((res) => {
         dispatch({
-          type: "FETCH_USER_SUCCESS",
+          type: 'FETCH_USER_SUCCESS',
           user: res.data,
         });
       })
       .catch(function (err) {
-        dispatch({ type: "FETCH_USER_ERROR", err });
+        dispatch({ type: 'FETCH_USER_ERROR', err });
       });
   };
 };
@@ -36,10 +36,10 @@ export const updateUser = (user) => {
       },
     };
     //make async call to database
-    dispatch({ type: "UPDATE_USER_STARTED" });
+    dispatch({ type: 'UPDATE_USER_STARTED' });
     axios
       .put(
-        `https://allergyappbackend.azurewebsites.net/api/account/userinfo`,
+        `http://allergyappipb.azurewebsites.net/api/account/userinfo`,
         {
           Email: user.userEmail,
           Name: user.userName,
@@ -49,12 +49,12 @@ export const updateUser = (user) => {
       )
       .then((res) => {
         dispatch({
-          type: "UPDATE_USER_SUCCESS",
+          type: 'UPDATE_USER_SUCCESS',
           user: res.data,
         });
       })
       .catch((err) => {
-        dispatch({ type: "UPDATE_USER_ERROR", err });
+        dispatch({ type: 'UPDATE_USER_ERROR', err });
       });
   };
 };

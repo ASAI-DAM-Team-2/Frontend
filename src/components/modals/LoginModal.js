@@ -27,9 +27,14 @@ class LoginModal extends Component {
     userEmail: '',
     userPassword: '',
     disabled: false,
+    authError: this.props.authError,
   };
 
   handleChange = (e) => {
+    if (this.state.disabled) {
+      this.setState({ disabled: false });
+      this.setState({ authError: null });
+    }
     this.setState({
       [e.target.id]: e.target.value,
     });
@@ -41,6 +46,9 @@ class LoginModal extends Component {
       email: this.state.userEmail,
       password: this.state.userPassword,
     });
+    if (this.props.authError) {
+      this.setState({ authError: this.props.authError });
+    }
 
     this.setState({ disabled: true });
     // here will be ajax api call for login
@@ -54,11 +62,12 @@ class LoginModal extends Component {
     }
     if (prevProps.authLoading && !this.props.authLoading) {
       this.setState({ disabled: false });
+      console.log('disabled');
     }
   }
 
   render() {
-    const { authError } = this.props;
+    const { authError } = this.state;
     return (
       <React.Fragment>
         <Modal
