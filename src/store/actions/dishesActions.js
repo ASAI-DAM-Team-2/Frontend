@@ -12,7 +12,7 @@ export const fetchRestaurantDishes = (restaurant_id) => {
     dispatch({ type: "FETCH_DISHES_STARTED" });
     axios
       .get(
-        `https://allergyappbackend.azurewebsites.net/api/Restaurant/${restaurant_id}/Dish`,
+        `http://allergyappipb.azurewebsites.net/api/Restaurant/${restaurant_id}/Dish`,
         header
       )
       .then((res) => {
@@ -39,7 +39,7 @@ export const createDish = (dish) => {
     dispatch({ type: "CREATE_DISHES_STARTED" });
     axios
       .post(
-        `https://allergyappbackend.azurewebsites.net/api/Dish`,
+        `http://allergyappipb.azurewebsites.net/api/Dish`,
         {
           title: dish.dishTitle,
           name: dish.dishName,
@@ -74,7 +74,7 @@ export const updateDish = (dish) => {
     dispatch({ type: "UPDATE_DISHES_STARTED" });
     axios
       .put(
-        `https://allergyappbackend.azurewebsites.net/api/Dish/${dish.dishDish_id}`,
+        `http://allergyappipb.azurewebsites.net/api/Dish/${dish.dishDish_id}`,
         {
           title: dish.dishTitle,
           name: dish.dishName,
@@ -108,10 +108,7 @@ export const deleteRestaurantDish = (id) => {
     //make async call to database
     dispatch({ type: "DELETE_DISHES_STARTED" });
     axios
-      .delete(
-        `https://allergyappbackend.azurewebsites.net/api/Dish/${id}`,
-        header
-      )
+      .delete(`http://allergyappipb.azurewebsites.net/api/Dish/${id}`, header)
       .then((res) => {
         dispatch({
           type: "DELETE_DISHES_SUCCESS",
