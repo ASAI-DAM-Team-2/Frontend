@@ -1,5 +1,5 @@
-import axios from "axios";
-require("dotenv").config();
+import axios from 'axios';
+require('dotenv').config();
 
 export const fetchRestaurantDishes = (restaurant_id) => {
   return (dispatch, getState) => {
@@ -9,20 +9,20 @@ export const fetchRestaurantDishes = (restaurant_id) => {
         Authorization: `Bearer ${authToken}`,
       },
     };
-    dispatch({ type: "FETCH_DISHES_STARTED" });
+    dispatch({ type: 'FETCH_DISHES_STARTED' });
     axios
       .get(
-        `http://allergyappipb.azurewebsites.net/api/Restaurant/${restaurant_id}/Dish`,
+        `https://allergyappipb.azurewebsites.net/api/Restaurant/${restaurant_id}/Dish`,
         header
       )
       .then((res) => {
         dispatch({
-          type: "FETCH_DISHES_SUCCESS",
+          type: 'FETCH_DISHES_SUCCESS',
           dishes: res.data,
         });
       })
       .catch(function (err) {
-        dispatch({ type: "FETCH_DISHES_ERROR", err });
+        dispatch({ type: 'FETCH_DISHES_ERROR', err });
       });
   };
 };
@@ -36,10 +36,10 @@ export const createDish = (dish) => {
       },
     };
     //make async call to database
-    dispatch({ type: "CREATE_DISHES_STARTED" });
+    dispatch({ type: 'CREATE_DISHES_STARTED' });
     axios
       .post(
-        `http://allergyappipb.azurewebsites.net/api/Dish`,
+        `https://allergyappipb.azurewebsites.net/api/Dish`,
         {
           title: dish.dishTitle,
           name: dish.dishName,
@@ -52,12 +52,12 @@ export const createDish = (dish) => {
       )
       .then((res) => {
         dispatch({
-          type: "CREATE_DISHES_SUCCESS",
+          type: 'CREATE_DISHES_SUCCESS',
           dishes: res.data,
         });
       })
       .catch((err) => {
-        dispatch({ type: "CREATE_DISHES_ERROR", err });
+        dispatch({ type: 'CREATE_DISHES_ERROR', err });
       });
   };
 };
@@ -71,10 +71,10 @@ export const updateDish = (dish) => {
       },
     };
     //make async call to database
-    dispatch({ type: "UPDATE_DISHES_STARTED" });
+    dispatch({ type: 'UPDATE_DISHES_STARTED' });
     axios
       .put(
-        `http://allergyappipb.azurewebsites.net/api/Dish/${dish.dishDish_id}`,
+        `https://allergyappipb.azurewebsites.net/api/Dish/${dish.dishDish_id}`,
         {
           title: dish.dishTitle,
           name: dish.dishName,
@@ -87,12 +87,12 @@ export const updateDish = (dish) => {
       )
       .then((res) => {
         dispatch({
-          type: "UPDATE_DISHES_SUCCESS",
+          type: 'UPDATE_DISHES_SUCCESS',
           dish: res.data,
         });
       })
       .catch((err) => {
-        dispatch({ type: "UPDATE_DISHES_ERROR", err });
+        dispatch({ type: 'UPDATE_DISHES_ERROR', err });
       });
   };
 };
@@ -106,17 +106,17 @@ export const deleteRestaurantDish = (id) => {
       },
     };
     //make async call to database
-    dispatch({ type: "DELETE_DISHES_STARTED" });
+    dispatch({ type: 'DELETE_DISHES_STARTED' });
     axios
-      .delete(`http://allergyappipb.azurewebsites.net/api/Dish/${id}`, header)
+      .delete(`https://allergyappipb.azurewebsites.net/api/Dish/${id}`, header)
       .then((res) => {
         dispatch({
-          type: "DELETE_DISHES_SUCCESS",
+          type: 'DELETE_DISHES_SUCCESS',
           id: id,
         });
       })
       .catch((err) => {
-        dispatch({ type: "DELETE_DISHES_ERROR", err });
+        dispatch({ type: 'DELETE_DISHES_ERROR', err });
       });
     // dispatch({ type: 'CREATE_RESTAURANT', restaurant });
   };
@@ -124,6 +124,6 @@ export const deleteRestaurantDish = (id) => {
 
 export const removeDishes = () => {
   return (dispatch, getState) => {
-    dispatch({ type: "REMOVE_DISHES" });
+    dispatch({ type: 'REMOVE_DISHES' });
   };
 };

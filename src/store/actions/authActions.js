@@ -18,7 +18,7 @@ export const signUp = (credentials) => {
 
     axios
       .post(
-        `http://allergyappipb.azurewebsites.net/api/Account/Register`,
+        `https://allergyappipb.azurewebsites.net/api/Account/Register`,
         requestBody
       )
 
@@ -44,7 +44,7 @@ export const signIn = (credentials) => {
 
     axios
       .post(
-        `http://allergyappipb.azurewebsites.net/token`,
+        `https://allergyappipb.azurewebsites.net/token`,
         qs.stringify(requestBody),
         config
       )

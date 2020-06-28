@@ -12,7 +12,7 @@ export const fetchUser = () => {
     dispatch({ type: 'FETCH_USER_STARTED' });
     axios
       .get(
-        `http://allergyappipb.azurewebsites.net/api/account/userinfo`,
+        `https://allergyappipb.azurewebsites.net/api/account/userinfo`,
         header
       )
       .then((res) => {
@@ -39,7 +39,7 @@ export const updateUser = (user) => {
     dispatch({ type: 'UPDATE_USER_STARTED' });
     axios
       .put(
-        `http://allergyappipb.azurewebsites.net/api/account/userinfo`,
+        `https://allergyappipb.azurewebsites.net/api/account/userinfo`,
         {
           Email: user.userEmail,
           Name: user.userName,

@@ -22,7 +22,7 @@ export const fetchRestaurants = () => {
     dispatch({ type: 'FETCH_RESTAURANT_STARTED' });
 
     axios
-      .get(`http://allergyappipb.azurewebsites.net/api/Restaurant`, header)
+      .get(`https://allergyappipb.azurewebsites.net/api/Restaurant`, header)
       .then((res) => {
         dispatch({
           type: 'FETCH_RESTAURANT_SUCCESS',
@@ -47,7 +47,7 @@ export const createRestaurant = (restaurant) => {
     dispatch({ type: 'CREATE_RESTAURANT_STARTED' });
     axios
       .post(
-        `http://allergyappipb.azurewebsites.net/api/Restaurant`,
+        `https://allergyappipb.azurewebsites.net/api/Restaurant`,
         {
           name: restaurant.restaurantName,
           adress: restaurant.restaurantAddress,
@@ -80,7 +80,7 @@ export const deleteRestaurant = (id) => {
     dispatch({ type: 'DELETE_RESTAURANT_STARTED' });
     axios
       .delete(
-        `http://allergyappipb.azurewebsites.net/api/Restaurant/${id}`,
+        `https://allergyappipb.azurewebsites.net/api/Restaurant/${id}`,
         header
       )
       .then((res) => {
@@ -108,7 +108,7 @@ export const editRestaurant = (restaurant) => {
     dispatch({ type: 'EDIT_RESTAURANT_STARTED' });
     return axios
       .put(
-        `http://allergyappipb.azurewebsites.net/api/Restaurant/${restaurantId}`,
+        `https://allergyappipb.azurewebsites.net/api/Restaurant/${restaurantId}`,
         {
           name: restaurant.restaurantName,
           adress: restaurant.restaurantAddress,
