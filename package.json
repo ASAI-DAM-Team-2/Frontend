@@ -10,7 +10,7 @@
     "classnames": "2.2.6",
     "dotenv": "^8.2.0",
     "moment": "2.24.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "nouislider": "13.1.5",
     "popper.js": "^1.16.1",
     "qs": "^6.9.4",
